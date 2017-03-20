@@ -8,6 +8,7 @@
 7. attr_accesor method used to define attributes for instances of a class
 8. in Boolean operators, ruby will only evaluate far enough to determine if expression if true or false.
   it will return whatever is returned by the last part of expression to get evauated
+9. iterator - ruby method that repeatedly repeats a block of code
 =end
 
 ##Symbols##
@@ -26,12 +27,14 @@ puts "POtapova".downcase # potapova
 name = "Olessia"
 name.downcase.reverse.upcase #AISSELO
 
+=begin
 print "whats your last name?"
 last_name = gets.chomp # "gets" is input "chomp" removes extra ruby line
 last_name2 = last_name.capitalize
 last_name.capitalize!
 
 puts "your last name is #{last_name}!"
+=end
 
 ### CONTROL FLOW IN RUBY ###
 
@@ -98,6 +101,7 @@ true || !(true || false) # => true
 6. print out changed string to user
 =end
 
+=begin
 print "whats your name hun?"
   user_input = gets.chomp
   user_input.downcase!
@@ -108,3 +112,71 @@ print "whats your name hun?"
   else
     puts "no s in your name, congrats"
   end
+=end
+
+### LOOPS & ITERATORS ###
+# .. include last number
+# ... do not include last number
+
+#WHILE LOOP#
+
+counter = 1
+while counter < 11
+  puts counter
+  counter = counter + 1
+end
+
+#UNTIL LOOP#
+i = 0
+until i == 6
+  i += 1
+end
+puts i
+
+#FOR LOOP#
+for num in 1...3 # see ..
+  puts num
+end
+
+#LOOP METHOD (iterator)#
+
+i = 0
+loop do
+  i += 1
+  print "#{i}"
+  break if i > 5
+end
+
+#NEXT##
+
+#skip even numbers
+for i in 1..7
+  next if i % 2 == 0
+  print i
+end
+
+#skip odd numbers
+for i in 1..7
+  next if i % 2 == 1
+  print i
+end
+
+# .EACH (iterator) #
+
+array = [1,2,3,4,5]
+
+array.each do |x|
+  x += 10
+  print "#{x}"
+end
+
+odds = [1,3,5,7,9]
+
+odds.each do |item|
+    item *= 2
+    puts "#{item}"
+end
+
+#.TIMES (iterator)#
+
+10.times {print "yas"}
