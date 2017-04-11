@@ -9,6 +9,8 @@
 8. in Boolean operators, ruby will only evaluate far enough to determine if expression if true or false.
   it will return whatever is returned by the last part of expression to get evauated
 9. iterator - ruby method that repeatedly repeats a block of code
+10. puts means put string
+11. every method is being done by some object even if it doesn't have a dot in front of it. 
 =end
 
 ##Symbols##
@@ -147,6 +149,15 @@ loop do
   break if i > 5
 end
 
+#exercise: print "Ruby!" string 30 times
+
+counter = 0
+loop do
+  counter += 1
+  print "Ruby!"
+  break if counter == 5
+end
+
 #NEXT##
 
 #skip even numbers
@@ -180,3 +191,32 @@ end
 #.TIMES (iterator)#
 
 10.times {print "yas"}
+
+
+#exercise: REDACTED! change users input
+=begin
+1. get 2 user inputs. (sentence + word to redact)
+2. divide user input into individual words
+3. iterate through users text: split each word
+  a. print out each word from the array
+  b. print word REDACTED for the redacted word
+optional:
+  1. redact a word regardless of capital or not capital
+  2. redact separate, multiple words
+  3. make a new redacted string, save it as a variable
+=end
+
+print "type something here: "
+text = gets.chomp
+print "what word do you want to redact? "
+redact = gets.chomp
+
+words = text.split(" ")
+
+words.each do |word|
+  if word == redact
+    print "REDACT"
+  else
+    print word + " "
+  end
+end
