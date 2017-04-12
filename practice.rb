@@ -4,7 +4,8 @@ puts (60 * (24 * 365)) * 10 # minutes in a decade
 
 puts (60 * (24 * 365)) * 60 * 26  #my age in seconds
 
-# Write a program which asks for a person's first name, then middle, then last.
+#problem 1:
+#Write a program which asks for a person's first name, then middle, then last.
 #Finally, it should greet the person using their full name.
 =begin
 puts 'What is your first name? '
@@ -19,6 +20,7 @@ last_name = gets.chomp
 puts 'Hello ' + first_name + ' ' + middle_name + ' ' + last_name + '. It\'s so good to meet you, ' + first_name + '!'
 
 
+#PROBLEM 2:
 #Write a program which asks for a person's favorite number.
 #Have your program add one to the number, then suggest the result as a bigger and better favorite number.
 
@@ -28,18 +30,8 @@ new_number = favorite_number + 1
 puts 'I think ' + new_number.to_s + ' is much better ;)' # need to convert new_number to string
 =end
 
-
-
-
-
-
-
-
-
-
-
-
-
+=begin
+#PROBLEM 3
 #Ask for first, middle, and last names individually, and then adds those lengths together
 
 puts "first name: "
@@ -58,3 +50,22 @@ full_name_letters = first_name + middle_name + last_name
 puts 'your full name is ' + full_name_spaces + '!'
 
 puts 'Your full name is ' + full_name_letters.length.to_s + ' letters long'
+=end
+
+#PROBLEM 4
+#"99 bottles of beer on the wall..."
+#Write a program which prints out the lyrics to that beloved classic, that field-trip favorite:
+#"99 Bottles of Beer on the Wall."
+#TODO: how to replace 0 with "no more"**
+
+beer_number = 5
+
+  while beer_number >= 1
+    # beer_number > 1 type first sentence, second beer_number - 1
+    puts beer_number.to_s + ' bottles of beer on the wall, ' + beer_number.to_s + ' bottles of beer.'
+    beer_number = beer_number.to_i - 1
+    puts 'Take one down and pass it around, ' + beer_number.to_s + ' bottles of beer on the wall.'
+  end
+
+puts 'No more bottles of beer on the wall, no more bottles of beer.'
+puts 'Go to the store and buy some more, 99 bottles of beer on the wall.'
