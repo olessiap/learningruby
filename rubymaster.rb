@@ -10,7 +10,9 @@
   it will return whatever is returned by the last part of expression to get evauated
 9. iterator - ruby method that repeatedly repeats a block of code
 10. puts means put string
-11. every method is being done by some object even if it doesn't have a dot in front of it. 
+11. every method is being done by some object even if it doesn't have a dot in front of it.
+12. arrays of arrays = multidimensional arrays
+13. A hash is a collection of key-value pairs
 =end
 
 ##Symbols##
@@ -172,6 +174,10 @@ for i in 1..7
   print i
 end
 
+puts
+
+puts
+
 # .EACH (iterator) #
 
 array = [1,2,3,4,5]
@@ -180,6 +186,9 @@ array.each do |x|
   x += 10
   print "#{x}"
 end
+# 11,12,13..
+
+puts
 
 odds = [1,3,5,7,9]
 
@@ -190,7 +199,7 @@ end
 
 #.TIMES (iterator)#
 
-10.times {print "yas"}
+2.times {print "yas"}
 
 
 #exercise: REDACTED! change users input
@@ -205,7 +214,7 @@ optional:
   2. redact separate, multiple words
   3. make a new redacted string, save it as a variable
 =end
-
+=begin
 print "type something here: "
 text = gets.chomp
 print "what word do you want to redact? "
@@ -219,4 +228,54 @@ words.each do |word|
   else
     print word + " "
   end
+end
+=end
+
+# ARRAYS
+
+
+flavor = 'vanilla'
+[89.9, flavor, [true, false]] #  float, string, array
+
+def doubleThis num
+  numTimes2 = num * 2
+  puts num.to_s + ' doubled is ' + numTimes2.to_s
+end
+
+#doubleThis 22
+
+####### HASH #######
+
+#hash = {
+#  key1 => value1,
+#  key2 => value2
+#}
+
+#OR
+
+hash = Hash.new
+hash["key1"] = "value1",
+hash["key2"] = "value2"
+
+#?
+pets = Hash.new
+pets["Pumpkin"] = "cat"
+
+puts pets["Pumpkin"]
+
+###iterate over Arrays
+
+numbers = [1, 2, 3, 4, 5]
+numbers.each {|element| puts element }
+
+###iterate over HASHES
+
+secret_identities = {
+  "The Batman" => "Bruce Wayne",
+  "Superman" => "Clark Kent",
+  "Wonder Woman" => "Diana Prince",
+  "Freakazoid" => "Dexter Douglas"
+}
+
+secret_identities.each do |hero, actor| puts "#{hero}: #{actor}"
 end

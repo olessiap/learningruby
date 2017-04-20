@@ -1,8 +1,8 @@
-=begin
+
 #problem 1:
 #Write a program which asks for a person's first name, then middle, then last.
 #Finally, it should greet the person using their full name.
-
+=begin
 puts 'What is your first name? '
 first_name = gets.chomp
 
@@ -15,20 +15,23 @@ last_name = gets.chomp
 puts 'Hello ' + first_name + ' ' + middle_name + ' ' + last_name + '. It\'s so good to meet you, ' + first_name + '!'
 =end
 
-=begin
+
 #PROBLEM 2:
 #Write a program which asks for a person's favorite number.
 #Have your program add one to the number, then suggest the result as a bigger and better favorite number.
 
+=begin
 puts 'Whats your favorite number hun?'
 favorite_number = gets.chomp.to_i
 new_number = favorite_number + 1
 puts 'I think ' + new_number.to_s + ' is much better ;)' # need to convert new_number to string
 =end
 
-=begin
+
 #PROBLEM 3
 #Ask for first, middle, and last names individually, and then adds those lengths together
+
+=begin
 
 puts "first name: "
 first_name = gets.chomp
@@ -48,14 +51,14 @@ puts 'your full name is ' + full_name_spaces + '!'
 puts 'Your full name is ' + full_name_letters.length.to_s + ' letters long'
 =end
 
-=begin
+
 #PROBLEM 4
 #"99 bottles of beer on the wall..."
 #Write a program which prints out the lyrics to that beloved classic, that field-trip favorite:
 #"99 Bottles of Beer on the Wall."
 #TODO: how to replace 0 with "no more"**
 
-
+=begin
 beer_number = 5
 
   while beer_number >= 1
@@ -69,7 +72,7 @@ puts 'No more bottles of beer on the wall, no more bottles of beer.'
 puts 'Go to the store and buy some more, 99 bottles of beer on the wall.'
 =end
 
-=begin
+
 #PROBLEM 5: Deaf Grandma program
 
 #Whatever you say to grandma, she should respond with  HUH?!  SPEAK UP, SONNY!, unless you shout it (type in all capitals).
@@ -85,7 +88,7 @@ puts 'Go to the store and buy some more, 99 bottles of beer on the wall.'
 #Change your previous program so that you have to shout BYE three times in a row.
 #Make sure to test your program: if you shout BYE three times, but not in a row, you should still be talking to grandma.
 
-
+=begin
 puts 'hi honey'
 user_answer = ()
 bye = 0
@@ -102,17 +105,18 @@ while bye < 3
 end
 =end
 
-=begin
+
 #PROBLEM 6: Leap Years
 #Write a program which will ask for a starting year and an ending year,
 #and then puts all of the leap years between them (and including them, if they are also leap years).
-Leap years are years divisible by four (like 1984 and 2004).
-However, years divisible by 100 are not leap years (such as 1800 and 1900) unless they are divisible by 400
-(like 1600 and 2000, which were in fact leap years).
-(Yes, it's all pretty confusing, but not as confusing as having July in the middle of the winter,
-which is what would eventually happen.)
-** to do: count how many leap years
-=end
+#Leap years are years divisible by four (like 1984 and 2004).
+#However, years divisible by 100 are not leap years (such as 1800 and 1900) unless they are divisible by 400
+#(like 1600 and 2000, which were in fact leap years).
+#(Yes, it's all pretty confusing, but not as confusing as having July in the middle of the winter,
+#which is what would eventually happen.)
+#** to do: count how many leap years
+
+=begin
 
 puts 'starting year: '
 starting_year = gets.chomp.to_i
@@ -129,3 +133,52 @@ puts 'Of these ' + difference.to_s + ' years, * are leap'
   next if year % 100 == 0 && year % 400 != 0
   puts year
 end
+=end
+
+#PROBLEM 7: Alphabetize user input
+#write a program which asks us to type in as many words as we want
+#(one word per line, continuing until we just press Enter on an empty line),
+#and which then repeats the words back to us in alphabetical order
+#Hint: There's a lovely array method whcich will give you a sorted version of an array:  sort. Use it!
+
+=begin
+puts 'type in any word here please: '
+x = 0
+word = 'word1'
+dictionary = []
+
+while word != ''
+  word = gets.chomp
+  dictionary[x] = word
+  x = x + 1
+end
+
+puts 'in alphabetical order: '
+puts dictionary.sort
+=end
+
+#PROBLEM 8: Happy Birthday!
+#Ask what year a person was born in, then the month, then the day.
+#Figure out how old they are and
+#give them a big SPANK! for each birthday they have had.
+
+=begin
+puts 'What year were you born? ex: 1990'
+year = gets.chomp
+puts 'What month were you born? ex: 03'
+month = gets.chomp
+puts 'What day were you born? ex: 31'
+day = gets.chomp
+=end
+
+
+#PROBLEM 9: FAMILY three
+#Set up a hash with your family members
+#print out each family member name and their relation to you
+
+my_family = {'Olga' => 'mom',
+  'Victor' => 'dad',
+  'Ivan' => 'brother'
+}
+
+my_family.each { |x, y| puts "#{x}: #{y}"}
