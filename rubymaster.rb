@@ -13,6 +13,9 @@
 11. every method is being done by some object even if it doesn't have a dot in front of it.
 12. arrays of arrays = multidimensional arrays
 13. A hash is a collection of key-value pairs
+14. index variable keeps track of which iteration the code is on, or increments until the condition is met
+15. objects are created by calling a constructor (special method associated with a class) .new
+16. expression interpolation "#{expression}"
 =end
 
 ##Symbols##
@@ -122,22 +125,22 @@ print "whats your name hun?"
 # .. include last number
 # ... do not include last number
 
-#WHILE LOOP#
+#WHILE LOOP# runs as long as condition is true
 
 counter = 1
-while counter < 11
+while counter < 5
   puts counter
-  counter = counter + 1
+  counter += 1
 end
 
-#UNTIL LOOP#
+#UNTIL LOOP# runs as long as the condition is false
 i = 0
 until i == 6
   i += 1
 end
 puts i
 
-#FOR LOOP#
+#FOR LOOP# common to loop through numbers in a range
 for num in 1...3 # see ..
   puts num
 end
@@ -150,13 +153,16 @@ loop do
   print "#{i}"
   break if i > 5
 end
+#=> 123456
 
+puts
 #exercise: print "Ruby!" string 30 times
 
 counter = 0
 loop do
-  counter += 1
-  print "Ruby!"
+  counter += 1 # so that counter starts at 1
+  print "#{counter}" + " Ruby!"
+  puts # so there's a space
   break if counter == 5
 end
 
@@ -279,3 +285,37 @@ secret_identities = {
 
 secret_identities.each do |hero, actor| puts "#{hero}: #{actor}"
 end
+
+### methods ###
+
+#write a method that returns a string, adding to that string a person's name.
+
+def phrase(name)
+  result = "Goodnight, " + name
+  return result
+end
+
+puts phrase("Olessia")
+
+#exercise: Century from year
+#Given a year, return the century it is in.
+#The first century spans from the year 1 up to and including the year 100,
+#the second - from the year 101 up to and including the year 200, etc.
+
+def centuryFromYear(year)
+  if year % 100 != 0
+    return year/100 + 1
+  else
+    return year/100
+  end
+end
+
+puts centuryFromYear(1876)
+
+#OR
+
+def centuryFromYear(year)
+  (year - 1) / 100 + 1
+end
+
+puts centuryFromYear(1345)

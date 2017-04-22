@@ -182,3 +182,58 @@ my_family = {'Olga' => 'mom',
 }
 
 my_family.each { |x, y| puts "#{x}: #{y}"}
+
+# PROBLEM 10.
+#write a method that returns a string,
+#adding to that string a person's name.
+
+def phrase(name)
+  result = "Goodnight, " + name
+  return result
+end
+
+puts phrase("Olessia")
+
+#PROBLEM 11: Century from year
+#Given a year, return the century it is in.
+#The first century spans from the year 1 up to and including the year 100,
+#the second - from the year 101 up to and including the year 200, etc.
+
+def centuryFromYear(year)
+  if year % 100 != 0
+    return year/100 + 1
+  else
+    return year/100
+  end
+end
+
+puts centuryFromYear(1876)
+
+#OR
+
+def centuryFromYear(year)
+  (year - 1) / 100 + 1
+end
+
+puts centuryFromYear(1345)
+
+#PROBLEM 12. Palindrome
+#Given the string, check if it is a palindrome.
+
+def checkPalindrome(inputString)
+  if inputString.reverse == inputString
+    return true
+  else
+    return false
+  end
+end
+
+puts checkPalindrome('hannahs')
+
+#OR
+
+def checkPalindrome(inputString)
+  return inputString.reverse == inputString
+end
+
+puts checkPalindrome('hannah')
