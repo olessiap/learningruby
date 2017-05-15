@@ -16,6 +16,10 @@
 14. index variable keeps track of which iteration the code is on, or increments until the condition is met
 15. objects are created by calling a constructor (special method associated with a class) .new
 16. expression interpolation "#{expression}"
+17. variable scope = section of code that recognizes it. Variable defined inside a method is only available inside that method.
+18. local variable = defined within a method is 'local' to that method
+19. return will stop an entire method, whereas
+    break will just break out of a loop and continue with the rest of the code in the method.
 =end
 
 ##Symbols##
@@ -319,3 +323,18 @@ def centuryFromYear(year)
 end
 
 puts centuryFromYear(1345)
+
+
+#### VARIABLE SCROPE CONCEPT #17
+
+important_var = "do not change me"
+
+def do_some_stuff
+    important_var = "we’re going to change this"
+    important_var = important_var.capitalize
+    puts(important_var)
+end
+
+puts(important_var)
+do_some_stuff
+puts(important_var)
