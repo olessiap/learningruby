@@ -1,11 +1,26 @@
-#1
+#1****
 #print out 1-10
+ind = 1
+while ind <= 10
+  puts ind
+  ind += 1
+end
 
 #2
 #exercise: print "Ruby!" string 30 times using loop
+ind = 1
+while ind <= 30
+  puts ind.to_s + " Ruby!"
+  ind += 1
+end
 
 #3
 #exercise: print 1-5 using while
+ind = 1
+while ind <= 5
+  puts ind
+  ind += 1
+end
 
 #4
 #write a method that returns a string, adding to that string a person's name.
