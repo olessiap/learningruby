@@ -22,7 +22,7 @@ while ind <= 5
   ind += 1
 end
 
-# PROBLEM 10.
+#4
 #write a method that returns a string,
 #adding to that string a person's name.
 
@@ -33,7 +33,8 @@ end
 
 puts phrase("Olessia")
 
-#PROBLEM 11: Century from year
+#5
+#Century from year
 #Given a year, return the century it is in.
 #The first century spans from the year 1 up to and including the year 100,
 #the second - from the year 101 up to and including the year 200, etc.
@@ -56,7 +57,8 @@ end
 
 puts centuryFromYear(1345)
 
-#PROBLEM 12. Palindrome
+#6
+#Palindrome
 #Given the string, check if it is a palindrome.
 
 def checkPalindrome(inputString)
@@ -77,6 +79,77 @@ end
 
 puts checkPalindrome('hannah')
 
+#7
+#Given an array of integers,
+#find the pair of adjacent elements that has the largest product
+#and return that product.
+
+# def array_of_integers(arr)
+#   ind = 0
+#   while ind < arr.length
+#     if arr[ind] < arr[ind] + 1
+#
+#     end
+#     ind += 1
+#   end
+# end
+#
+# puts array_of_integers([1,2,3,4])
+
+#8
+#evaluate the expression 12 ** 2, and print the result 3 times
+
+result = 12 ** 2
+puts result.to_s * 3
+
+#9 print out 1-4
+
+ind = 1
+while ind <=4
+  puts ind
+  ind += 1
+end
+
+#10
+#FINISH THE CODE BELOW WITH A WHILE LOOP THAT WILL
+#INCREMENT THE VARIABLE NUM_DOGS BY 2
+#AND DECREMENT THE VARIABLE NUM_CATS BY 1
+#UNTIL NUM_DOGS IS GREATER THAN NUM_CATS.
+#num_dogs = 1
+#num_cats = 186
+
+num_dogs = 1
+num_cats = 186
+
+while num_dogs < num_cats
+  num_dogs = num_dogs + 1
+  num_cats = num_cats - 2
+end
+
+#11
+#print out all numbers divisible by 3 from 0 - 100
+
+num = (1..101).to_a
+
+ind = 0
+while ind < num.length
+  if num[ind] % 3 == 0
+    puts num[ind]
+  end
+  ind +=1
+end
+
+
+#12
+#HOW WOULD YOU DETERMINE THE LENGTH OF ARRAY ["A", "B", "C"]?
+array = ["A", "B", "C"]
+puts array.length
+
+#13
+#FIND THE LAST ITEM IN ARRAY of VEGETABLES USING .LENGTH.
+
+
+#14
 #WRITE A WHILE LOOPS THAT PRINTS EVERY ODD NUMBER FROM THE VARIABLE ONE_TO_TEN.
 #one_to_ten = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -124,6 +197,15 @@ end
 
 puts best_programming_languages.inspect
 
+#17
+#CHANGE THE THIRD ITEM IN THE COUNTRIES ARRAY TO "COLOMBIA".
+#countries = ["Denmark", "Kenya", "Australia", "USA", "Bhutan"]
+countries = ["Denmark", "Kenya", "Australia", "USA", "Bhutan"]
+
+countries[2] = "COLOMBIA"
+
+puts countries.inspect
+
 #18
 #WRITE A WHILE LOOPS THAT UPDATES EVERY EVEN NUMBER IN ODDS BY SUBTRACTING 1 FROM IT.
 #odds = [777, 14, 12, 39, 41, 10, 1, 355]
@@ -140,6 +222,40 @@ while index < odds.length
 end
 
 puts odds.inspect
+
+#19
+#find if the languages array contains Korean
+#languages = ["German", "English", "Arabic", "Hungarian", "Spanish", "Japanese"]
+languages = ["German", "Korean", "Arabic", "Hungarian", "Spanish", "Japanese"]
+
+languages.include?("Korean")
+
+
+#20****
+#COMPLETE THE CODE BELOW TO PRINT OUT EACH LANGUAGE IN THE LANGUAGES ARRAY,
+#CAPITALIZED, IN ALPHABETICAL ORDER.
+#languages = ["german", "english", "arabic", "hungarian", "spanish", "japanese"]
+languages = ["german", "english", "arabic", "hungarian", "spanish", "japanese"]
+
+languages = languages.sort
+
+ind = 0
+while ind < languages.length
+  puts languages[ind].capitalize
+  ind += 1
+end
+
+#21
+#HOW CAN WE ACCESS THE FIFTH CHARACTER IN THE STRING "DESTINATION: DEV"?
+
+puts "DESTINATION: DEV"[4]
+
+#22***
+#HOW WOULD YOU SEPARATE THE STRING "PROGRAMMING IS FUN" INTO AN ARRAY OF WORDS?
+
+og_string = "PROGRAMMING IS FUN"
+split_string = og_string.split
+puts split_string
 
 #23
 #PRINT OUT THE FOLLOWING SENTENCE WITH A HASH IN BETWEEN WORDS INSTEAD OF A SPACE:
