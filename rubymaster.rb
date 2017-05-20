@@ -14,12 +14,14 @@
 12. arrays of arrays = multidimensional arrays
 13. A hash is a collection of key-value pairs
 14. index variable keeps track of which iteration the code is on, or increments until the condition is met
+#["rock", "paper", "scissors"].index("paper")
 15. objects are created by calling a constructor (special method associated with a class) .new
 16. expression interpolation "#{expression}"
 17. variable scope = section of code that recognizes it. Variable defined inside a method is only available inside that method.
 18. local variable = defined within a method is 'local' to that method
 19. return will stop an entire method, whereas
     break will just break out of a loop and continue with the rest of the code in the method.
+20. sort! -- exclamation point permanently changes the array rather than making a new copy that is sorted
 =end
 
 ##Symbols##
@@ -38,6 +40,13 @@ puts "POtapova".downcase # potapova
 name = "Olessia"
 name.downcase.reverse.upcase #AISSELO
 
+.start_with?("")
+<< #(+) better for large scale string manipulations
+.split(' ') #splits string into array
+.gsub('old', 'new') #replaces string
+	'RubyMonk'.gsub(/[aeiou]/, '1') #replaces all vowels with 1
+.match(/ ./) #finds a substring next to a space (good for parsers)
+
 =begin
 print "whats your last name?"
 last_name = gets.chomp # "gets" is input "chomp" removes extra ruby line
@@ -50,6 +59,10 @@ puts "your last name is #{last_name}!"
 ### CONTROL FLOW IN RUBY ###
 
 ### IF/ELSE ###
+#typical setup up
+if
+elseif
+else
 
 if 5 < 7
   puts "7 is less than 5"
@@ -159,6 +172,11 @@ loop do
 end
 #=> 123456
 
+loop do
+  monk.meditate
+  break if monk.nirvana?
+end
+
 puts
 #exercise: print "Ruby!" string 30 times
 
@@ -251,6 +269,24 @@ def doubleThis num
   numTimes2 = num * 2
   puts num.to_s + ' doubled is ' + numTimes2.to_s
 end
+
+#select even numbers
+[1,2,3,4,5,6].select {|number| number % 2 == 0}
+#[2,4,6]
+
+#select words longer than 5 characters
+names = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+names.select{|word| word.length > 5}
+
+#delete element 5 from array
+#[1,2,5,3,5]
+[1,2,5,3,5].delete(5)
+
+
+#delete all elements less than 4
+#[1,2,3,4,5,6,7]
+
+[1,2,3,4,5,6,7].delete_if{|i| i < 4}
 
 #doubleThis 22
 
