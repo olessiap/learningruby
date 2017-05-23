@@ -361,7 +361,7 @@ end
 puts centuryFromYear(1345)
 
 
-#### VARIABLE SCROPE CONCEPT #17
+#### VARIABLE SCOPE CONCEPT #17
 
 important_var = "do not change me"
 

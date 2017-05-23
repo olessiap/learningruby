@@ -439,7 +439,9 @@ puts(longest_word("wheat rice barley quinoa oat") == ["barley", "quinoa"])
 puts(longest_word("papaya plum tangerine strawberry apple") == ["strawberry"])
 puts(longest_word("long word") == ["long", "word"])
 
-# ################
+
+
+##################
 puts "problem 45"
 # ################
 
@@ -486,13 +488,57 @@ puts(vowel_count("this is a string") == 4)
 puts(vowel_count("yythjklqwwwwwzx") == 0)
 puts(vowel_count("the owl is wise") == 5)
 
+
 ################
 puts "problem 47"
 ################
+# Problem 8: Sum of Digits
+#
+# Write a method, digit_sum, that takes an integer as input and returns the sum of
+# its digits.
+#
+# Example:
+# 245 => 2 + 4 + 5 => 11
+# 670 => 6 + 7 + 0 => 13
+#split numbers into an array
+#set ind and sum to 0
+# add first number to sum
+#add next number to sum
+
+
 
 ################
 puts "problem 48"
 ################
+# Problem 9: Prefix Repeat
+#
+# Write a method, prefix_repeated?, that takes a string and an integer as input. The 
+# integer is used to determine the length of the prefix of the string to test. Look
+# to see if the prefix is repeated elsewhere, and return true if it is and false if it
+# isn't. Assume int is less than or equal to the length of the string.
+#
+# Example:
+# 
+# prefix_repeated?("armed armadillo", 3)
+# 	- The prefix is the first three letters of the string, "arm".
+#   - Now we look to see if the string "arm" is repeated in the string. We can see that it
+#     is so we return true.
+#
+# prefix_repeated("armed armadillo", 4)
+# 	- This time the prefix is the first 4 letters, "arme".
+#	- "arme" does not appear again in the string so we return false
+
+def prefix_repeated?(string, int)
+	
+end
+
+# Tests 
+puts(prefix_repeated?("a", 1) == false)
+puts(prefix_repeated?("prefix predator", 2) == true)
+puts(prefix_repeated?("prefix predator", 4) == false)
+puts(prefix_repeated?("poster child postfix", 4) == true)
+puts(prefix_repeated?("title", 1) == true)
+
 
 
 ################
@@ -501,3 +547,13 @@ puts "problem 49"
 #Given an array of integers, find the pair of adjacent elements that has the largest product and return that product.
 #ex: inputArray = [3, 6, 2] -5, 7, 3], the output should be = 21 bc 7 and 3 produce the largest product.
 #todo list
+
+
+
+################
+puts "problem 50"
+################
+#find the missing numbers in an array and return how many are missing
+#example: [1,4,6] #missing 2,3,5 #total missing = 3
+
+

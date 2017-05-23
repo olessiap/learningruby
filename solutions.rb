@@ -945,11 +945,98 @@ puts(vowel_count("the owl is wise") == 5)
 ################
 puts "problem 47"
 ################
+# Problem 8: Sum of Digits
+#
+# Write a method, digit_sum, that takes an integer as input and returns the sum of
+# its digits.
+#
+# Example:
+# 245 => 2 + 4 + 5 => 11
+# 670 => 6 + 7 + 0 => 13
+#split numbers into an array
+#set ind and sum to 0
+# add first number to sum
+#add next number to sum
+
+def digit_sum(num)
+  arr = num.to_s.split("")
+  ind = 0
+  sum = 0
+  while ind < arr.length
+    sum =+ sum + arr[ind].to_i
+    ind += 1
+  end
+  return sum
+end
+
+# Tests
+puts(digit_sum(0) == 0)
+puts(digit_sum(86) == 14)
+puts(digit_sum(902557) == 28)
+puts(digit_sum(41) == 5)
+puts(digit_sum(666666666666) == 72)
+
 
 ################
 puts "problem 48"
 ################
+# Problem 9: Prefix Repeat
+#
+# Write a method, prefix_repeated?, that takes a string and an integer as input. The 
+# integer is used to determine the length of the prefix of the string to test. Look
+# to see if the prefix is repeated elsewhere, and return true if it is and false if it
+# isn't. Assume int is less than or equal to the length of the string.
+#
+# Example:
+# 
+# prefix_repeated?("armed armadillo", 3)
+# 	- The prefix is the first three letters of the string, "arm".
+#   - Now we look to see if the string "arm" is repeated in the string. We can see that it
+#     is so we return true.
+#
+# prefix_repeated("armed armadillo", 4)
+# 	- This time the prefix is the first 4 letters, "arme".
+#	- "arme" does not appear again in the string so we return false
 
+#easy solution
+def prefix_repeated?(string, int)
+	string_array = string.split("")
+	prefix = ""
+	ind = 0
+
+	while ind < int
+		prefix = prefix + string_array.shift
+		ind = ind + 1 
+	end
+	
+	string_array.join.include?(prefix)
+end
+
+#hard solution
+def prefix_repeated?(string, int)
+	prefix = string.slice!(0, int)
+	string.include?(prefix)
+end
+
+
+#my solution
+def prefix_repeated?(string, int)
+	#set length of prefix
+	prefix = string[0..int-1]
+	#print out the prefix
+	#look for the prefix in the string
+	string.include?(prefix)
+	
+end
+
+
+
+# Tests 
+puts(prefix_repeated?("a", 1) == false)
+puts(prefix_repeated?("prefix predator", 2) == true)
+puts(prefix_repeated?("prefix predator", 4) == false)
+puts(prefix_repeated?("poster child postfix", 4) == true)
+puts(prefix_repeated?("title", 1) == true)
 
 ################
 puts "problem 49"
@@ -970,3 +1057,35 @@ def adjacentElementsProduct(inputArray)
 end
 
 puts(adjacentElementsProduct([3, 6, -2, -5, 7, 3]) == 21)
+
+
+
+################
+puts "problem 50"
+################
+#find the missing numbers in an array and return how many are missing
+#example: [1,4,6] #missing 2,3,5 #total missing = 3
+
+def makeArrayConsecutive2(statues)
+    #find missing numbers in statues
+    #store missing numbers in array
+    #count how many elements in new array
+    statues = statues.sort
+    new_statues = (statues.first..statues.last).to_a 
+    missing_numbers = new_statues-statues
+    return missing_numbers.count
+    
+end
+
+#advanced solution
+
+def makeArrayConsecutive2(statues)
+    statues.max - statues.min - statues.size + 1
+end
+
+
+p(makeArrayConsecutive2([1,4]) == 2) #missing_numbers 2,3 #total_missing=2
+p(makeArrayConsecutive2([1,4,6,2,3]) == 1) #2,3,4,5,8,9 = 6
+
+
+
