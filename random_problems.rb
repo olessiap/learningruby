@@ -182,3 +182,128 @@ my_family = {'Olga' => 'mom',
 }
 
 my_family.each { |x, y| puts "#{x}: #{y}"}
+
+#write a method that returns a string, adding to that string a person's name.
+
+def phrase(name)
+  result = "Goodnight, " + name
+  return result
+end
+
+puts phrase("Olessia")
+
+#exercise: Century from year
+#Given a year, return the century it is in.
+#The first century spans from the year 1 up to and including the year 100,
+#the second - from the year 101 up to and including the year 200, etc.
+
+def centuryFromYear(year)
+  if year % 100 != 0
+    return year/100 + 1
+  else
+    return year/100
+  end
+end
+
+puts centuryFromYear(1876)
+
+#OR
+
+def centuryFromYear(year)
+  (year - 1) / 100 + 1
+end
+
+puts centuryFromYear(1345)
+
+
+################################################################################
+##########################BUILDING A HISTOGRAM #################################
+################################################################################
+#a program that takes a user's input, then builds a hash from that input. 
+#Each key in the hash will be a word from the user; 
+#each value will be the number of times that word occurs. 
+#ex: the rain in the forest >> the 2, rain 1, in 1, forest 1
+
+#1. get user input
+#2. save input into variable text
+#3. turn string into an array
+#4. count words using a hash
+    #create a new hash with default value 0
+#5. iterate over the array, add each word to the hash
+#6. sort the hash
+    #from highest to lowest
+#7. print out the word/frequency combos 
+    
+text = "the rain the snow"
+
+words = text.split(" ")
+frequencies = Hash.new(0)
+words.each { |word| frequencies[word] += 1 }
+frequencies = frequencies.sort_by {|a, b| b }
+frequencies.reverse!
+frequencies.each { |word, frequency| puts word + " " + frequency.to_s }
+
+=begin
+exercise 10: CRUD
+use Ruby hashes and symbols to construct a program that 
+displays, adds, updates and removes movie ratings
+1. create a hash to hold movie and ratings
+2. print out 4 lines of directions
+3. prompt user for input (choice)
+4. set up the choice case statement
+5. build out each when statement
+6 add:
+  6a ask for title, rating
+  6b add values to movies hash
+  6c convert key to symbol, value to integer
+  6d add if/else statement that checks if the movie is already in the hash
+  6e puts confirmation that new movie is added
+7 update an existing movie in the hash
+  7a ask for movie title
+  7b store it in title
+  7c if the movie nil => error 
+  7d else update movie hash
+  7e ask for new rating
+  7f set movie rating to new value
+  7g convert value to integer
+8. display all
+  8a print out each key/value pair
+9. delete
+  9a ask which one to delete
+  9b if title exists => delete it
+  9c if not => error
+=end
+
+movies = { 
+  Titanic: 1, 
+  Jaws: 3,
+  SuperBad: 10
+}
+
+puts "add to add a movie"
+puts "update to update an existing movie"
+puts "display to show all current movies"
+puts "delete to remove a movie from the list"
+
+
+
+
+#Write a while loop that takes input from the user, performs an action, 
+#and only stops when the user types "STOP". Each loop can get info from the user.
+
+# puts "hello"
+# user_input = gets.chomp
+
+# unless user_input == "STOP"
+#   puts "tell me something about yourself"
+# end
+
+# loop do
+#   puts "tell me something about yourself"
+#   user_input = gets.chomp
+#   break if user_input == "STOP"
+# end
+
+arr = ["one", "two", "three"]
+
+puts %w[one two thre].each_with_index { |index, number| puts "index #{index + 1} : #{number}" }

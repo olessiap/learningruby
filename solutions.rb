@@ -1089,3 +1089,45 @@ p(makeArrayConsecutive2([1,4,6,2,3]) == 1) #2,3,4,5,8,9 = 6
 
 
 
+################
+puts "problem 51"
+################
+#count how many times a word was mentioned in a text
+#print out all combos from highest to lowest
+#ex: "the rain the snow" the 2, rain 1, snow 1
+#use a hash
+#1. get user input
+#2. save input into variable text
+#3. turn string into an array
+#4. count words using a hash
+    #create a new hash with default value 0
+#5. iterate over the array, add each word to the hash
+#6. sort the hash
+    #from highest to lowest
+#7. print out the word/frequency combos 
+text = "the rain the snow"
+
+words = text.split(" ")
+frequencies = Hash.new(0)
+words.each { |word| frequencies[word] += 1 }
+frequencies = frequencies.sort_by {|a, b| b }
+frequencies.reverse!
+frequencies.each { |word, frequency| puts word + " " + frequency.to_s }
+
+################
+puts "problem 52"
+################
+
+#Using map (and one other method), create an array that 
+#lists the numbers 0 to -100 in descending order. 
+#Without typing all the numbers manually, of course.
+
+100.times.map{|x| -x}
+
+#or
+
+(0.100).map{|x| -x}
+
+#my answer
+(0..-100).to_a
+

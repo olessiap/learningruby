@@ -30,7 +30,9 @@
 :hello.methods
 :hello.methods.count # 77
 
-###STRING METHODS###
+########################
+#### STRING METHODS ####
+########################
 
 "olessia potapova".length
 "olessia potapova".reverse #good for sorting from highest/lowest
@@ -47,23 +49,33 @@ name.downcase.reverse.upcase #AISSELO
 	'RubyMonk'.gsub(/[aeiou]/, '1') #replaces all vowels with 1
 .match(/ ./) #finds a substring next to a space (good for parsers)
 
-=begin
-print "whats your last name?"
-last_name = gets.chomp # "gets" is input "chomp" removes extra ruby line
-last_name2 = last_name.capitalize
-last_name.capitalize!
 
-puts "your last name is #{last_name}!"
-=end
+################################################################################
+##########################      CONTROL FLOW          ##########################
+################################################################################
 
-### CONTROL FLOW IN RUBY ###
+######################
+#####  IF/ELSE   #####
+######################
 
-### IF/ELSE ###
 #typical setup up
 if
 elseif
 else
 
+######################
+### SIMPLE IF/ELSE #### 
+#TERNARY COND. EXPSSION
+######################
+
+#Syntax
+boolean ? Do this if true: Do this if false
+
+#example
+puts 3 < 4 ? "3 is less than 4" : "3 is not less than 4"
+
+
+#example
 if 5 < 7
   puts "7 is less than 5"
 elsif 5 > 7
@@ -72,9 +84,17 @@ else
   puts "5 is 7"
 end
 
- "this is a sentence".gsub("e"){|letter| letter.upcase}
+######################
+#####  SIMPLE IF #####
+######################
+#Syntax
+action if boolean
 
- ### UNLESS ###
+puts "its true" if true
+
+######################
+#####  UNLESS  #######
+######################
 
  hungry = false
 
@@ -87,20 +107,57 @@ end
 problem = false
 print "Good to go!" unless problem
 
-### BOOLEAN OPERATORS ###
+######################
+###SIMPLE UNLESS #####
+######################
+#Syntax
+action unless boolean
 
-# && AND - true if both expression on either side are TRUE#
+puts "Im running" unless true
+
+######################
+## CASE STATEMENT  ###
+######################
+#like if/else 
+#syntax: (then action is optional)
+case casevariable then action
+when "value1" then action
+when "value2"
+else
+end 
+
+
+#exercise 10: CRUD in random_problems.rb
+#use Ruby hashes and symbols to construct a program that 
+#adds, updates, displays, and removes movie ratings
+
+
+######################
+##BOOLEAN OPERATORS ##
+######################
+
+########
+##AND###
+########
+#true if both expression on either side are TRUE#
 #left side must evaluate true, if false, doesn't even go to the second expression
 
 1 < 2 && 2 < 3 # => true
 
-# || OR - true if one of the expressions is true (inclusive or)
+########
+###OR###
+########
+#true if one of the expressions is true (inclusive or)
 #if left side evalutes to true, the right side will not be tried
 #bc it has already met the condition of 1 side to be true
 
 true || false # => true
 
-# ! NOT - makes true boolean operators false and vice-versa
+
+########
+##NOT###
+########
+#- makes true boolean operators false and vice-versa
 
 !true # => false
 
@@ -109,6 +166,21 @@ true || false # => true
 !true && (!true || 100 != 5**2) # => false
 
 true || !(true || false) # => true
+
+#######################
+########## ||= #######
+#CONDITIONAL ASSIGNMENT
+#######################
+#like = 
+#assigns a variable if it hasn't been assigned already
+
+#good for using instead of checking if an array is empty
+#instead of:
+array = [] if array.nil?
+#better to use conditional assignment  
+array ||= []
+
+
 
 #EXERCISE: replacing "s" strings with "th" #
 #extra credit:
@@ -138,31 +210,53 @@ print "whats your name hun?"
   end
 =end
 
-### LOOPS & ITERATORS ###
+################################################################################
+##########################  LOOPS & ITERATORS       ############################
+################################################################################
+
+
 # .. include last number
 # ... do not include last number
 
-#WHILE LOOP# runs as long as condition is true
 
+######################
+##### WHILE LOOP #####
+######################
+#runs as long as condition is true
+# returns nil
+ 
 counter = 1
 while counter < 5
   puts counter
   counter += 1
 end
 
-#UNTIL LOOP# runs as long as the condition is false
+######################
+##### UNTIL LOOP #####
+######################
+#runs as long as the condition is false
 i = 0
 until i == 6
   i += 1
 end
 puts i
 
-#FOR LOOP# common to loop through numbers in a range
+######################
+###### FOR LOOP ######
+######################
+#common to loop through numbers in a range
+# or a collection of elements
+#returns a collection of elements
+
 for num in 1...3 # see ..
   puts num
 end
 
-#LOOP METHOD (iterator)#
+######################
+####LOOP METHOD ######
+######################
+#loop gets executed 1 time, before conditional check
+#to see if the rest should be executed
 
 i = 0
 loop do
@@ -188,7 +282,9 @@ loop do
   break if counter == 5
 end
 
-#NEXT##
+######################
+########NEXT #########
+######################
 
 #skip even numbers
 for i in 1..7
@@ -206,7 +302,11 @@ puts
 
 puts
 
-# .EACH (iterator) #
+
+######################
+###.EACH (iterator)###
+######################
+
 
 array = [1,2,3,4,5]
 
@@ -225,7 +325,10 @@ odds.each do |item|
     puts "#{item}"
 end
 
-#.TIMES (iterator)#
+
+######################
+###.times (iterator)##
+######################
 
 2.times {print "yas"}
 
@@ -259,7 +362,9 @@ words.each do |word|
 end
 =end
 
-# ARRAYS
+################################################################################
+###############################  ARRAYS      ###################################
+################################################################################
 
 
 flavor = 'vanilla'
@@ -288,26 +393,6 @@ names.select{|word| word.length > 5}
 
 [1,2,3,4,5,6,7].delete_if{|i| i < 4}
 
-#doubleThis 22
-
-####### HASH #######
-
-#hash = {
-#  key1 => value1,
-#  key2 => value2
-#}
-
-#OR
-
-hash = Hash.new
-hash["key1"] = "value1",
-hash["key2"] = "value2"
-
-#?
-pets = Hash.new
-pets["Pumpkin"] = "cat"
-
-puts pets["Pumpkin"]
 
 ###iterate over Arrays
 
@@ -326,39 +411,6 @@ secret_identities = {
 secret_identities.each do |hero, actor| puts "#{hero}: #{actor}"
 end
 
-### methods ###
-
-#write a method that returns a string, adding to that string a person's name.
-
-def phrase(name)
-  result = "Goodnight, " + name
-  return result
-end
-
-puts phrase("Olessia")
-
-#exercise: Century from year
-#Given a year, return the century it is in.
-#The first century spans from the year 1 up to and including the year 100,
-#the second - from the year 101 up to and including the year 200, etc.
-
-def centuryFromYear(year)
-  if year % 100 != 0
-    return year/100 + 1
-  else
-    return year/100
-  end
-end
-
-puts centuryFromYear(1876)
-
-#OR
-
-def centuryFromYear(year)
-  (year - 1) / 100 + 1
-end
-
-puts centuryFromYear(1345)
 
 
 #### VARIABLE SCOPE CONCEPT #17
@@ -374,3 +426,210 @@ end
 puts(important_var)
 do_some_stuff
 puts(important_var)
+
+
+################################################################################
+##########################        METHODS           ############################
+################################################################################
+
+
+#MULTIPLE ARGUMENTS * 
+def what_up(greeting, *bros)
+  bros.each { |bro| puts "#{greeting}, #{bro}!" }
+end
+ 
+p what_up("What up", "Justin", "Ben", "Kevin Sorbo")
+
+# method that capitalizes a word
+def capitalize(string) 
+  puts "#{string[0].upcase}#{string[1..-1]}" #[1..-1] >> prints the rest of the word normally
+end
+
+#reverse sort
+fruits = ["orange", "apple", "banana", "pear", "grapes"]
+fruits.sort! { |x, y| -(x <=> y) }
+
+############## a method for oredering array elements###################
+#1. define  alphabetize method
+
+def alphabetize(arr, rev=false) #2nd paramenter defaults to false if not given
+  arr.sort!
+  if rev
+    return arr.reverse!
+  else
+    return arr.sort!
+  end
+end
+
+text = ["a", "z", "b"]
+
+puts alphabetize(text, true)
+
+
+
+################################################################################
+##########################       HASHES          ###############################
+################################################################################
+#KEY VALUE PAIRS
+#KEYS UNIQUE
+#VALUES CAN REPEAT
+
+###CREATING A HASH####
+
+#hash literal notation
+new_hash = {"one" => 1}
+
+#hash constructor notation
+new_hash = Hash.new
+
+##only print out the values##
+member = {"First name" => "Olessia",
+  "Last name" => "Potapova",
+  "Nationality" => "American(russian)",
+  "age" => "26"
+}
+
+member.each do |key, value|
+  puts value, member[value]
+end
+
+## set default to a custom value 
+my_hash = Hash.new("default value here")
+
+##accesing a value in a hash
+my_hash[value]
+
+
+##accessing a value based on specific criteria
+#.select
+grades = { David: 100,
+  Whirly: 92,
+  Joel: 95
+}
+
+grades.select{|name, grade| grade > 96} # :David => 100 
+grades.select{|k, v| k == :Whirly } # :Whirly=>92
+
+
+#accessing just keys or just values
+#.each_key |k|
+#.each_value |v|
+grades.each_key { |k| puts k, " " } # David, Whirly, Joel
+
+#adding keys and values to a hash
+grades[:Hoimes]  = 91
+
+#deleting from a hash
+grades.delete(:Hoimes)
+
+##Optional hash parameters##
+def greeting(name, options ={})
+   if options.empty?
+    puts "Hi, my name is #{name}"
+  else
+    puts "Hi, my name is #{name} and I'm #{options[:age]}" + 
+    " years old and I live in #{options[:city]}."
+  end
+end 
+
+greeting ("Bob")
+greeting ("Bob", {age: 62, city: "SF"}) 
+#or
+gretting("Bob", age: 62. city: "SF")
+
+################################################################################
+##########################  :::     SYMBOLS :::     ############################
+################################################################################
+# : NOT A STRING
+# : MORE LIKE A NAME
+# multiple different strings can have the same value
+# symbol has one copy only(symbol can't be changed after creation)
+# used as hash keys or for referencing methods
+# symbol keys are faster in hash look up then string keys
+
+#symbol syntax
+my_first_symbol = :yolo 
+
+second_symbol_hash = {
+  one: 1,
+  two: 2,
+  three: "three"
+}
+
+#convert strings to symbols
+
+strings = ["HTML", "CSS", "JavaScript", "Python", "Ruby"]
+
+symbols = []
+
+strings.each do |s|
+  symbols.push(s.to_sym)
+end
+
+
+#symbols are faster than strings in hash look up
+
+string_AZ = Hash[("a".."z").to_a.zip((1..26).to_a)]
+symbol_AZ = Hash[(:a..:z).to_a.zip((1..26).to_a)]
+
+string_time = Benchmark.realtime do
+  100_000.times { string_AZ["r"] }
+end
+
+symbol_time = Benchmark.realtime do
+  100_000.times { symbol_AZ[:r] }
+end
+
+puts "String time: #{string_time} seconds."
+puts "Symbol time: #{symbol_time} seconds."
+
+
+
+################################################################################
+###############################  ENUMERABLES  ##################################
+################################################################################
+
+# .each - doesn't alter 
+# .each_with_index - 
+# .each_index - alters
+# .map - makes new arr
+# .each_with_index.map
+# .select - returns an element that is true/false
+# .inject - makes arr into a single value, like sum
+  #takes initial value as an argument
+  # 2 arguments
+
+#.each_with_index
+#print out every other element in the array
+["cat", "dog", "pig", "goat"].each_with_index do |animal, idx| 
+  puts animal if idx % 2 == 0 #every third is idx % 3 == 2
+end
+
+#.map
+#list -100 to 0 
+(0..100).map{|x| -x}
+
+#COMBINED .each_with_index + .map
+arr = ["a", "b", "c"].each_with_index.map do |letter, idx|
+  "#{letter.capitalize} is in position #{idx+1} of the alphabet"
+end 
+
+puts arr.join("\n")
+
+#.select
+puts [1,'a', 2, 'b', 5].select { |x| x.class==String}.join(", ") #a,b
+
+#.inject
+val = [1,3,5,7].inject(0) do |total, num|
+   total += num
+end   
+puts val   #=> 16
+
+# use .INJECT to convert an array into a hash
+data_arr = [['dog', 'Fido'], ['cat', 'Whiskers'], ['fish', 'Fluffy']]
+
+data_hash = data_arr.inject({}) do |hsh, v|
+  hsh[v[0]] = v[1]
+  hsh
+end
+
