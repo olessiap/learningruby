@@ -1126,8 +1126,122 @@ puts "problem 52"
 
 #or
 
-(0.100).map{|x| -x}
+#(0.100).map{|x| -x}
 
 #my answer
 (0..-100).to_a
+
+
+################
+puts "problem 53"
+################
+#You are given a two-digit integer n. Return the sum of its digits.
+
+#my 1st answer
+def addTwoDigits(n)
+  sum = 0
+  ind = 0
+  new_n = n.to_s.split('').map(&:to_i)
+  while ind < new_n.length
+    sum += new_n[ind]
+    ind += 1
+  end
+  sum
+end
+puts addTwoDigits(12)
+
+#refactored
+
+def addTwoDigits(n)
+  n = n.to_s
+  sum = 0
+  n.each_char do |num| 
+    sum += num.to_i
+  end
+  return sum
+end
+
+puts addTwoDigits(111)
+
+
+#super refactored
+
+def addTwoDigits(n)
+    n % 10 + n / 10
+end
+
+puts addTwoDigits(25)
+
+################
+puts "problem 54"
+################
+#Given an integer n, return the largest number that contains exactly n digits.
+#ex: 1 => 9, 2 => 99 
+
+def largestNumber(n)
+  puts (10 ** n) - 1
+end
+
+largestNumber(3)
+
+#or
+def largestNumber(n)
+    ('9'*n).to_i
+end
+
+
+################
+puts "problem 55"
+################
+# a lambda that checks if each element in an array is a symbol
+#my_array = ["raindrops", :kettles, "whiskers", :mittens, :packages]
+
+my_array = ["raindrops", :kettles, "whiskers", :mittens, :packages]
+
+symbol_filter = lambda { |x| x.is_a? Symbol }
+symbols = my_array.select(&symbol_filter)
+
+puts symbols
+
+################
+puts "problem 56"
+################
+
+#a block that checks for integers in the array
+#odds_n_ends = [:weezard, 42, "Trady Blix", 3, true, 19, 12.345]
+
+odds_n_ends = [:weezard, 42, "Trady Blix", 3, true, 19, 12.345]
+
+ints = odds_n_ends.select { |x| x.is_a? Integer }
+puts ints
+
+################
+puts "problem 57"
+################
+#use proc to select all ages under 100
+#ages = [23, 101, 7, 104, 11, 94, 100, 121, 101, 70, 44]
+
+ages = [23, 101, 7, 104, 11, 94, 100, 121, 101, 70, 44]
+under_100 = Proc.new { |x| x < 100 }
+youngsters = ages.select(&under_100)
+
+
+################
+puts "problem 58"
+################
+#Write a program that checks if the sequence of characters "lab" exists 
+#in the following strings. If it does exist, print out the word.
+# "laboratory"
+# "experiment"
+# "Pans Labyrinth"
+# "elaborate"
+# "polar bear"
+
+arr = ["laboratory", "experiment", "Pans labyrinth", "elaborate", "polar bear"]
+arr.select do |word| 
+  string = word.to_s
+  if string.include? "lab"
+    puts string
+  end
+  end
 

@@ -557,3 +557,74 @@ puts "problem 50"
 #example: [1,4,6] #missing 2,3,5 #total missing = 3
 
 
+################
+puts "problem 51"
+################
+#count how many times a word was mentioned in a text
+#print out all combos from highest to lowest
+#ex: "the rain the snow" the 2, rain 1, snow 1
+#use a hash
+#1. get user input
+#2. save input into variable text
+#3. turn string into an array
+#4. count words using a hash
+    #create a new hash with default value 0
+#5. iterate over the array, add each word to the hash
+#6. sort the hash
+    #from highest to lowest
+#7. print out the word/frequency combos 
+
+
+################
+puts "problem 52"
+################
+#Using map (and one other method), create an array that 
+#lists the numbers 0 to -100 in descending order. 
+#Without typing all the numbers manually, of course.
+
+
+################
+puts "problem 53"
+################
+#You are given a two-digit integer n. Return the sum of its digits.
+
+
+################
+puts "problem 54"
+################
+#Given an integer n, return the largest number that contains exactly n digits.
+#ex: 1 => 9, 2 => 99 
+
+
+################
+puts "problem 55"
+################
+# a lambda that checks if each element in an array is a symbol
+#my_array = ["raindrops", :kettles, "whiskers", :mittens, :packages]
+
+
+################
+puts "problem 56"
+################
+
+#a block that checks for integers in the array
+#odds_n_ends = [:weezard, 42, "Trady Blix", 3, true, 19, 12.345]
+
+################
+puts "problem 57"
+################
+#use proc to select all ages under 100
+#ages = [23, 101, 7, 104, 11, 94, 100, 121, 101, 70, 44]
+
+
+################
+puts "problem 58"
+################
+#Write a program that checks if the sequence of characters "lab" exists 
+#in the following strings. If it does exist, print out the word.
+# "laboratory"
+# "experiment"
+# "Pans Labyrinth"
+# "elaborate"
+# "polar bear"
+

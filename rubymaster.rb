@@ -257,6 +257,7 @@ end
 ######################
 #loop gets executed 1 time, before conditional check
 #to see if the rest should be executed
+#good for asking something multiple times until a condition is met (yes/no input)
 
 i = 0
 loop do
@@ -393,6 +394,19 @@ names.select{|word| word.length > 5}
 
 [1,2,3,4,5,6,7].delete_if{|i| i < 4}
 
+#.product => joins 2 arrays
+arr = ["b", "a"]
+arr = arr.product(Array(1..3))
+#=> ["b", 1], ["b", 2,], ["b", 3,], ["a", 1], ["a", 2], ["a", 3]
+
+#.index find what index a particular element is at
+arr = [15, 7, 18, 5, 12, 8, 5, 1] 
+arr.index(5) #=> 3
+
+#what element is at a particular index
+arr[5] # => 8 
+
+
 
 ###iterate over Arrays
 
@@ -410,7 +424,6 @@ secret_identities = {
 
 secret_identities.each do |hero, actor| puts "#{hero}: #{actor}"
 end
-
 
 
 #### VARIABLE SCOPE CONCEPT #17
@@ -497,7 +510,10 @@ end
 my_hash = Hash.new("default value here")
 
 ##accesing a value in a hash
-my_hash[value]
+my_hash["key"]
+#or 
+my_hash.fetch("key")
+
 
 
 ##accessing a value based on specific criteria
@@ -537,6 +553,27 @@ greeting ("Bob", {age: 62, city: "SF"})
 #or
 gretting("Bob", age: 62. city: "SF")
 
+
+#Given a hash of family members, with keys as the title 
+#and an array of names as the values, 
+#use Ruby's built-in select method to gather only immediate family members' names 
+#into a new array.
+
+
+family = {  uncles: ["bob", "joe", "steve"],
+            sisters: ["jane", "jill", "beth"],
+            brothers: ["frank","rob","david"],
+            aunts: ["mary","sally","susan"]
+          }
+
+immideate = family.select do |k, v | 
+   k == :sisters || k == :brothers 
+ end
+ 
+arr = immideate.values.flatten
+ 
+arr
+
 ################################################################################
 ##########################  :::     SYMBOLS :::     ############################
 ################################################################################
@@ -548,12 +585,20 @@ gretting("Bob", age: 62. city: "SF")
 # symbol keys are faster in hash look up then string keys
 
 #symbol syntax
-my_first_symbol = :yolo 
+my_first_symbol = :yolo #=>:my_first_symbol
 
 second_symbol_hash = {
   one: 1,
   two: 2,
   three: "three"
+}
+
+#OR
+owl = { 
+  :type => "Bird", 
+  :diet => "Carnivore", 
+  :life_span => "10 years" 
+  
 }
 
 #convert strings to symbols
@@ -594,7 +639,7 @@ puts "Symbol time: #{symbol_time} seconds."
 # .each_index - alters
 # .map - makes new arr
 # .each_with_index.map
-# .select - returns an element that is true/false
+# .select -  returns == key/value pairs
 # .inject - makes arr into a single value, like sum
   #takes initial value as an argument
   # 2 arguments
@@ -632,4 +677,148 @@ data_hash = data_arr.inject({}) do |hsh, v|
   hsh[v[0]] = v[1]
   hsh
 end
+
+################################################################################
+##################################  BLOCKS  ####################################
+################################################################################
+
+#.times
+#.collect - applies expression in the block to every element in an array
+#yield - switches code from method to block
+
+#a block that checks for integers in an array
+odds_n_ends = [:weezard, 42, "Trady Blix", 3, true, 19, 12.345]
+int = odds_n_ends.select { |x| x.is_a? Integer }
+puts int
+
+
+#pass in a number to a block
+def take_block(number, &block)
+  block.call(number)
+end 
+
+number = 42
+take_block(number) do |num|
+  puts "block being called in the method #{num}"
+end
+
+######################
+########.YIELD()######
+######################
+#yield - switches code from method to block
+
+def yield_name(name)
+  puts "In the method! Let's yield."
+  yield("Kim")
+  puts "In between the yields!"
+  yield(name)
+  puts "Block complete! Back in the method."
+end
+
+yield_name("Eric") { |n| puts "My name is #{n}." }
+
+#In the method! Let's yield.
+#My name is Kim.
+#In between the yields!
+#My name is Eric.
+#Block complete! Back in the method.
+
+
+################################################################################
+##################################  PROCS ######################################
+################################################################################
+#Saved block
+#good for keeping code DRY
+#.call - calls proc directly
+# & - convert symbols to procs 
+# &procaname when passing to method - converts to block
+#weird edge cases with return, avoid using if possible
+#stops after first return
+
+
+#example
+multiples_of_3 = Proc.new do |n|
+  n % 3 == 0
+end
+
+(1..100).to_a.select(&multiples_of_3) #also .collect or .map
+
+
+# & - convert symbols to procs 
+#By mapping &:to_i over every element of strings, 
+#we turned each string into an integer!
+strings = ["1", "2", "3"]
+nums = strings.map(&:to_i)
+# ==> [1, 2, 3]
+
+#use proc to select all ages under 100
+ages = [23, 101, 7, 104, 11, 94, 100, 121, 101, 70, 44]
+
+under_100 = Proc.new { |x| x < 100}
+youngsters = ages.select(&under_100)
+
+
+################################################################################
+##############################    LAMBDA     ###################################
+################################################################################
+#same as a proc but different syntax &
+#checks the number of arguments passed to it
+#when a lambda returns, it passes control back to the calling method; 
+#when a proc returns, it does so immediately, without going back to the calling 
+  #method
+# returns last line it evaluates
+# &lambdaname when passing to method - converts to block
+
+#SYNTAX
+lambda { |param| block }
+
+short = ->(a, b) { a + b }
+puts short.call(2, 3)
+
+long = lambda { |a, b| a + b }
+puts long.call(2, 3)
+
+
+#simple lambda
+l = lambda { "Do or do not" }
+puts l.call
+
+# turn array of strings into array of symbols 
+strings = ["leonardo", "donatello", "raphael", "michaelangelo"]
+
+symbolize = lambda { |x| x.to_sym }
+
+symbols = strings.collect(&symbolize)
+
+
+#difference between proc and lambda
+def batman_ironman_proc 
+  victor = Proc.new { return "Batman will win"}
+  victor.call
+  "Ironman will win"
+end
+
+puts batman_ironman_proc 
+# => Batman will win
+#returns immediately, without going back to the batman_ironman_proc method
+
+def batman_ironman_lambda
+  victor = lambda{ return "Batman will win" }
+  victor.call
+  "Ironman will win"
+end 
+
+puts batman_ironman_lambda 
+# => Ironman will win
+#goes back into the method after being called, 
+#so the method returns the last code it evaluates
+
+
+# a lambda that checks if each element in an array is a symbol
+my_array = ["raindrops", :kettles, "whiskers", :mittens, :packages]
+
+symbol_filter = lambda { |x| x.is_a? Symbol }
+symbols = my_array.select(&symbol_filter)
+
+
 

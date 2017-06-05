@@ -304,6 +304,4 @@ puts "delete to remove a movie from the list"
 #   break if user_input == "STOP"
 # end
 
-arr = ["one", "two", "three"]
 
-puts %w[one two thre].each_with_index { |index, number| puts "index #{index + 1} : #{number}" }
