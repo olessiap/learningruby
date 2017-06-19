@@ -104,6 +104,13 @@ puts "problem 15"
 #foods = ["bread", "cheese", "onions", "bananas"]
 #beverages = ["juice", "water", "vodka", "coffee"]
 
+foods = ["bread", "cheese", "onions", "bananas"]
+beverages = ["juice", "water", "vodka", "coffee"]
+
+while beverages.length > 0
+    foods.unshift(beverages.pop)
+end
+puts foods
 
 ################
 puts "problem 16"
@@ -111,12 +118,27 @@ puts "problem 16"
 #replace all languages in the following array to Ruby
 #best_programming_languages = ["C++", "Go", "Ruby", "JavaScript", "Python"]
 
+best_programming_languages = ["C++", "Go", "Ruby", "JavaScript", "Python"]
+print best_programming_languages.inspect
+
+new = best_programming_languages.collect do |x| 
+    if x != "Ruby" 
+        x = "Ruby"
+    else
+        x
+    end
+end
+print new.inspect
 
 ################
 puts "problem 17"
 ################
 #CHANGE THE THIRD ITEM IN THE COUNTRIES ARRAY TO "COLOMBIA".
 #countries = ["Denmark", "Kenya", "Australia", "USA", "Bhutan"]
+countries = ["Denmark", "Kenya", "Australia", "USA", "Bhutan"]
+countries[2] = "Colombia"
+
+puts countries.inspect
 
 
 ################
@@ -125,6 +147,17 @@ puts "problem 18"
 #WRITE A WHILE LOOPS THAT UPDATES EVERY EVEN NUMBER IN ODDS BY SUBTRACTING 1 FROM IT.
 #odds = [777, 14, 12, 39, 41, 10, 1, 355]
 
+odds = [777, 14, 12, 39, 41, 10, 1, 355]
+
+new_odds = odds.collect do |x|
+   if x % 2 != 0
+       x = x - 1
+   else
+       x 
+   end
+end
+
+puts new_odds.inspect
 
 ################
 puts "problem 19"
@@ -132,6 +165,13 @@ puts "problem 19"
 #find if the languages array contains Korean
 #languages = ["German", "English", "Arabic", "Hungarian", "Spanish", "Japanese"]
 
+languages = ["German", "English", "Arabic", "Hungarian", "Spanish", "Japanese"]
+languages.include?("Korean")
+    if true 
+        puts "YES"
+    else
+        puts "nope"
+    end
 
 ################
 puts "problem 20"
@@ -139,12 +179,18 @@ puts "problem 20"
 #COMPLETE THE CODE BELOW TO PRINT OUT EACH LANGUAGE IN THE LANGUAGES ARRAY,
 #CAPITALIZED, IN ALPHABETICAL ORDER.
 #languages = ["german", "english", "arabic", "hungarian", "spanish", "japanese"]
+languages = ["german", "english", "arabic", "hungarian", "spanish", "japanese"]
 
+new_lang = languages.sort
+new_lang = languages.map {|x| x.capitalize} 
+puts new_lang.inspect
 
 ################
 puts "problem 21"
 ################
 #HOW CAN WE ACCESS THE FIFTH CHARACTER IN THE STRING "DESTINATION: DEV"?
+
+puts "DESTINATION: DEV"[4]
 
 
 ################
@@ -152,18 +198,22 @@ puts "problem 22"
 ################
 #HOW WOULD YOU SEPARATE THE STRING "PROGRAMMING IS FUN" INTO AN ARRAY OF WORDS?
 
+arr = "PROGRAMMING IS FUN".split
+puts arr.inspect
 
 ################
 puts "problem 23"
 ################
 #PRINT OUT THE FOLLOWING SENTENCE WITH A HASH IN BETWEEN WORDS INSTEAD OF A SPACE:
 #"Are you getting the hang of this?"
-
+puts "Are you getting the hang of this?".split.join("-")
 
 ################
 puts "problem 24"
 ################
 #return only the first 5 characters of any string
+string = "1234567"
+puts string[0..4]
 
 ################
 puts "problem 25"
@@ -171,6 +221,10 @@ puts "problem 25"
 #FINISH THE CODE BELOW TO RETURN THE ALPHABET ARRAY AS A SINGLE STRING,
 #WITH EACH LETTER LOWERCASE. THE LETTERS SHOULD BE SEPARATED BY SEMICOLONS(;)
 #alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+puts alphabet.join(";").downcase
 
 
 ################
@@ -180,6 +234,12 @@ puts "problem 26"
 #strings: 'see' 'you' 'soon'
 
 
+def capitalize_join(arr)
+    arr.join(" ").capitalize
+end
+
+puts capitalize_join(['see', 'you', 'soon'])
+
 ################
 puts "problem 27"
 ################
@@ -187,11 +247,27 @@ puts "problem 27"
 #strings: "Cat", "Dog", "Human"
 
 
+def shuffled_letters(str)
+    str.split("").shuffle
+end
+
+def combined_shuffled_letters(str1, str2, str3)
+    shuffled_letters(str1) + shuffled_letters(str2) + shuffled_letters(str3)
+end
+
+puts combined_shuffled_letters("Cat", "dog", "human")
+
 ################
 puts "problem 28"
 ################
 #DEFINE A METHOD, CALLED HELLO_WORLD, THAT PRINTS OUT THE STRING "HELLO WORLD!".
 #THEN, CALL THE METHOD TO MAKE IT PRINT.
+
+def hello_world
+    puts "hello world"
+end
+
+hello_world
 
 
 ################
@@ -201,7 +277,14 @@ puts "problem 29"
 #AND RETURNS AN ARRAY OF THE LETTERS IN THE STRING WITH EVERY LETTER "A" (ONLY LOWERCASE) REMOVED.
 #THEN, CALL THE METHOD ON THE STRING "ARTISTIC AARDVARKS ARE ANNOYING".
 #(HINT: USE THE STRING SPLIT, AND ARRAY DELETE METHODS).
+def remove_as(str)
+  str_array = str.split("")
+  str_array.delete("A")
+  str_array.delete(" ")
+  str_array
+end
 
+puts remove_as("ARTISTIC AARDVARKS ARE ANNOYING")
 
 
 ################
@@ -211,6 +294,20 @@ puts "problem 30"
 #numbers: 1,3,5,6,8,11,12
 #(check if the array is empty first, use return)
 
+def even_numbers(arr)
+    if arr.empty?
+        return "aint nothin here"
+    end
+    arr.each do |x|
+        if x % 2 == 0
+            puts x
+        end
+    end
+end
+
+puts even_numbers([])
+even_numbers([1,3,5,6,8,11,12])
+
 
 
 ################
@@ -219,13 +316,33 @@ puts "problem 31"
 #print out the following numbers until 0 ([1, 3, 6, 2, 0, 14, 9, 7])
 #(use break, print "all done" at the end)
 
+numbers = [1, 3, 6, 2, 0, 14, 9, 7]
+numbers.each do |x|
+   puts x
+   if x == 0
+       break
+   end
+end
+ puts "all done!"
+
 
 ################
 puts "problem 32"
 ################
 #WRITE A METHOD, PRINT_UNTIL_EMPTY, THAT WILL TAKE IN A STRING
 #AND PRINT OUT EVERY LETTER UNTIL AN EMPTY SPACE IS ENCOUNTERED
+def print_until_empty(str)
+    arr = str.split('')
+    arr.each do |x|
+        if x == " "
+            break
+        else
+            puts x
+        end
+    end
+end
 
+print_until_empty("hello to you")
 
 
 ################
@@ -235,12 +352,16 @@ puts "problem 33"
 #[1,2,3,4,5,6]
 
 
+puts [1,2,3,4,5,6].select {|x| x % 2 == 0 }
+
 ################
 puts "problem 34"
 ################
 #select words longer than 5 characters
 #names = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+names = ['rock', 'paper', 'scissors', 'lizard', 'spock']
 
+puts names.select { |x| x.length > 5 }
 
 ################
 puts "problem 35"
@@ -248,12 +369,17 @@ puts "problem 35"
 #delete element 5 from array
 #[1,2,5,3,5]
 
+arr = [1,2,5,3,5]
+new_arr = arr.delete(5)
+puts new_arr
+
 
 ################
 puts "problem 36"
 ################
 #delete all elements less than 4
 #[1,2,3,4,5,6,7]
+[1,2,3,4,5,6,7].delete_if {|x| x < 4 }
 
 
 ################
@@ -266,13 +392,19 @@ puts "problem 37"
 ################
 puts "problem 38"
 ################
-#white a method that that returns numbers that are less than 4
+#write a method that that returns numbers that are less than 4
 #[1,2,3,6,5,4,8,3,6,1,0]
 
 #solution 1: use a for loop
 
-#solution 2: use each loop
 
+#solution 2: use each loop
+arr = [1,2,3,6,5,4,8,3,6,1,0]
+arr.each do |x|
+    if x < 4
+        puts x
+    end
+end
 
 ################################################################################
 ################################################################################
@@ -294,7 +426,11 @@ hello(nil) => "Hello... World?"
 =end
 
 def hello(name)
-
+    if name
+        "Hello " + name + "!"
+    else 
+        "Hello... World?"
+    end
 end
 
 #Tests
@@ -319,9 +455,34 @@ Example:
 
 sum_to_num(3) == 6 ----> 1 + 2 + 3 = 6
 =end
+#break down the number into an array
+
+#iterate over and add to each other
 
 def sum_to_num(num)
+    sum = 0
+    (1..num).each do |int|
+        sum += int
+    end
+    sum
 end
+
+p sum_to_num(3)
+
+#OR 
+
+def sum_to_num(num)
+    sum = 0
+    current = 1 
+    while current <= num
+        sum += current
+        current += 1
+    end
+    sum
+end
+
+
+
 
 #Tests
 puts(sum_to_num(1) == 1)
@@ -331,213 +492,213 @@ puts(sum_to_num(17) == 153)
 puts(sum_to_num(1346) == 906531)
 puts(sum_to_num(487633) == 118893215161)
 
-################
-puts "problem 41"
-################
-
-# Problem 2: Fizz Buzz
-#
-# FizzBuzz is a classic problem in programming. We want you to
-# create a method called fizzbuzz that takes one argument,
-# which you can assume is a positive integer. If the number
-# passed in is divisible by 3, the method should return the
-# string "fizz".If the number is divisible by 5, the method should return the
-# string "buzz". If the number is divisible by both 3 and 5, the
-# method should return the string "fizzbuzz". Finally, if the
-# number is not divisible by either number it should return the
-# number. We've included the definition of the method for you,
-# along with some tests. Fill in the code, and make sure all of
-# the tests return true!
-
-
-def fizzbuzz(num)
-end
-
-#Tests
-puts(fizzbuzz(1) == 1)
-puts(fizzbuzz(3) == "fizz")
-puts(fizzbuzz(5) == "buzz")
-puts(fizzbuzz(13) == 13)
-puts(fizzbuzz(15) == "fizzbuzz")
-puts(fizzbuzz(123457) == 123457)
-puts(fizzbuzz(120) == "fizzbuzz")
-
-
 # ################
-puts "problem 42"
+# puts "problem 41"
 # ################
 
-=begin
-Problem 3: Reverse the String
-For this problem, create a method called reverse that takes a string as input and returns
-that string in reverse.
-=end
+# # Problem 2: Fizz Buzz
+# #
+# # FizzBuzz is a classic problem in programming. We want you to
+# # create a method called fizzbuzz that takes one argument,
+# # which you can assume is a positive integer. If the number
+# # passed in is divisible by 3, the method should return the
+# # string "fizz".If the number is divisible by 5, the method should return the
+# # string "buzz". If the number is divisible by both 3 and 5, the
+# # method should return the string "fizzbuzz". Finally, if the
+# # number is not divisible by either number it should return the
+# # number. We've included the definition of the method for you,
+# # along with some tests. Fill in the code, and make sure all of
+# # the tests return true!
 
-def reverse(string)
 
-end
+# def fizzbuzz(num)
+# end
 
-# Tests
-puts(reverse("a") == "a")
-puts(reverse("az") == "za")
-puts(reverse("abcdefg") == "gfedcba")
-puts(reverse("Hello World") == "dlroW olleH")
-puts(reverse("rotator") == "rotator")
+# #Tests
+# puts(fizzbuzz(1) == 1)
+# puts(fizzbuzz(3) == "fizz")
+# puts(fizzbuzz(5) == "buzz")
+# puts(fizzbuzz(13) == 13)
+# puts(fizzbuzz(15) == "fizzbuzz")
+# puts(fizzbuzz(123457) == 123457)
+# puts(fizzbuzz(120) == "fizzbuzz")
 
-# ################
-puts "problem 43"
-# ################
 
-=begin
-Problem 4: Factorial
+# # ################
+# puts "problem 42"
+# # ################
 
-You may remember the concept of factorials from math class. The factorial of a number is
-that number multiplied by every number below it down to one. Factorials have are
-indicated by a ! after an integer.
+# =begin
+# Problem 3: Reverse the String
+# For this problem, create a method called reverse that takes a string as input and returns
+# that string in reverse.
+# =end
 
-Example:
-6! = 6 x 5 x 4 x 3 x 2 x 1 = 720
+# def reverse(string)
 
-Write a method, factorial, that accepts an argument that is a positive integer and returns
-the factorial of that integer.
-=end
+# end
 
-def factorial(num)
+# # Tests
+# puts(reverse("a") == "a")
+# puts(reverse("az") == "za")
+# puts(reverse("abcdefg") == "gfedcba")
+# puts(reverse("Hello World") == "dlroW olleH")
+# puts(reverse("rotator") == "rotator")
 
-end
+# # ################
+# puts "problem 43"
+# # ################
 
-#Tests
-puts(factorial(1) == 1)
-puts(factorial(2) == 2)
-puts(factorial(6) == 720)
-puts(factorial(13) == 6227020800)
-puts(factorial(20) == 2432902008176640000)
+# =begin
+# Problem 4: Factorial
 
-# ################
-puts "problem 44"
-# ################
+# You may remember the concept of factorials from math class. The factorial of a number is
+# that number multiplied by every number below it down to one. Factorials have are
+# indicated by a ! after an integer.
 
-# Problem 5: Longest Word
-#
-# Write a method, longest_word, that accepts a string as input and returns an array
-# containing the longest word(s) in that string, in alphabetical order.
-#
 # Example:
-#
-# longest_word("the longest word in this sentence is antidisestablishmentarianism")
-#  => ["antidisestablishmentarianism"]
+# 6! = 6 x 5 x 4 x 3 x 2 x 1 = 720
+
+# Write a method, factorial, that accepts an argument that is a positive integer and returns
+# the factorial of that integer.
+# =end
+
+# def factorial(num)
+
+# end
+
+# #Tests
+# puts(factorial(1) == 1)
+# puts(factorial(2) == 2)
+# puts(factorial(6) == 720)
+# puts(factorial(13) == 6227020800)
+# puts(factorial(20) == 2432902008176640000)
+
+# # ################
+# puts "problem 44"
+# # ################
+
+# # Problem 5: Longest Word
+# #
+# # Write a method, longest_word, that accepts a string as input and returns an array
+# # containing the longest word(s) in that string, in alphabetical order.
+# #
+# # Example:
+# #
+# # longest_word("the longest word in this sentence is antidisestablishmentarianism")
+# #  => ["antidisestablishmentarianism"]
 
 
-def longest_word(sentence)
+# def longest_word(sentence)
 
-end
+# end
 
-# Tests
-puts(longest_word("") == [""])
-puts(longest_word("butter") == ["butter"])
-puts(longest_word("wheat rice barley quinoa oat") == ["barley", "quinoa"])
-puts(longest_word("papaya plum tangerine strawberry apple") == ["strawberry"])
-puts(longest_word("long word") == ["long", "word"])
+# # Tests
+# puts(longest_word("") == [""])
+# puts(longest_word("butter") == ["butter"])
+# puts(longest_word("wheat rice barley quinoa oat") == ["barley", "quinoa"])
+# puts(longest_word("papaya plum tangerine strawberry apple") == ["strawberry"])
+# puts(longest_word("long word") == ["long", "word"])
 
 
 
-##################
-puts "problem 45"
+# ##################
+# puts "problem 45"
+# # ################
+
+# # Problem 6: Palindromes
+# #
+# # Write a method, palindromes, that accepts an array of numbers as an argument and returns
+# # an array of only the numbers that are palindromes. Palindromes are numbers that are the
+# # same forward and backward. Numbers in the returned array should be in the same order as
+# # in the original array.
+# #
+# # For Example:
+# #
+# # 101 is the same forward and backward. It is a palindrome.
+# # 102 is 201 backwards; it is not a palindrome.
+
+# def palindromes(arr)
+
+# end
+
+# # Tests
+# puts(palindromes([1]) == [1])
+# puts(palindromes([15]) == [])
+# puts(palindromes([555, 7889887, 43698, 77, 17]) == [555, 7889887, 77])
+# puts(palindromes([360, 111, 50, 499, 10]) == [111])
+# puts(palindromes([]) == [])
+
+# # ################
+# puts "problem 46"
+# # ################
+
+
+# # Problem 7: Vowel Count
+# #
+# # Write a method, vowel_count, that takes a string as input and outputs a count of the
+# # number of vowels in the string. Vowels are of the set "a", "e", "i", "o", "u"
+
+# def vowel_count(str)
+# end
+
+# # Tests
+# puts(vowel_count("") == 0)
+# puts(vowel_count("a") == 1)
+# puts(vowel_count("this is a string") == 4)
+# puts(vowel_count("yythjklqwwwwwzx") == 0)
+# puts(vowel_count("the owl is wise") == 5)
+
+
 # ################
+# puts "problem 47"
+# ################
+# # Problem 8: Sum of Digits
+# #
+# # Write a method, digit_sum, that takes an integer as input and returns the sum of
+# # its digits.
+# #
+# # Example:
+# # 245 => 2 + 4 + 5 => 11
+# # 670 => 6 + 7 + 0 => 13
+# #split numbers into an array
+# #set ind and sum to 0
+# # add first number to sum
+# #add next number to sum
 
-# Problem 6: Palindromes
-#
-# Write a method, palindromes, that accepts an array of numbers as an argument and returns
-# an array of only the numbers that are palindromes. Palindromes are numbers that are the
-# same forward and backward. Numbers in the returned array should be in the same order as
-# in the original array.
-#
-# For Example:
-#
-# 101 is the same forward and backward. It is a palindrome.
-# 102 is 201 backwards; it is not a palindrome.
 
-def palindromes(arr)
-
-end
-
-# Tests
-puts(palindromes([1]) == [1])
-puts(palindromes([15]) == [])
-puts(palindromes([555, 7889887, 43698, 77, 17]) == [555, 7889887, 77])
-puts(palindromes([360, 111, 50, 499, 10]) == [111])
-puts(palindromes([]) == [])
 
 # ################
-puts "problem 46"
+# puts "problem 48"
 # ################
+# # Problem 9: Prefix Repeat
+# #
+# # Write a method, prefix_repeated?, that takes a string and an integer as input. The 
+# # integer is used to determine the length of the prefix of the string to test. Look
+# # to see if the prefix is repeated elsewhere, and return true if it is and false if it
+# # isn't. Assume int is less than or equal to the length of the string.
+# #
+# # Example:
+# # 
+# # prefix_repeated?("armed armadillo", 3)
+# # 	- The prefix is the first three letters of the string, "arm".
+# #   - Now we look to see if the string "arm" is repeated in the string. We can see that it
+# #     is so we return true.
+# #
+# # prefix_repeated("armed armadillo", 4)
+# # 	- This time the prefix is the first 4 letters, "arme".
+# #	- "arme" does not appear again in the string so we return false
 
-
-# Problem 7: Vowel Count
-#
-# Write a method, vowel_count, that takes a string as input and outputs a count of the
-# number of vowels in the string. Vowels are of the set "a", "e", "i", "o", "u"
-
-def vowel_count(str)
-end
-
-# Tests
-puts(vowel_count("") == 0)
-puts(vowel_count("a") == 1)
-puts(vowel_count("this is a string") == 4)
-puts(vowel_count("yythjklqwwwwwzx") == 0)
-puts(vowel_count("the owl is wise") == 5)
-
-
-################
-puts "problem 47"
-################
-# Problem 8: Sum of Digits
-#
-# Write a method, digit_sum, that takes an integer as input and returns the sum of
-# its digits.
-#
-# Example:
-# 245 => 2 + 4 + 5 => 11
-# 670 => 6 + 7 + 0 => 13
-#split numbers into an array
-#set ind and sum to 0
-# add first number to sum
-#add next number to sum
-
-
-
-################
-puts "problem 48"
-################
-# Problem 9: Prefix Repeat
-#
-# Write a method, prefix_repeated?, that takes a string and an integer as input. The 
-# integer is used to determine the length of the prefix of the string to test. Look
-# to see if the prefix is repeated elsewhere, and return true if it is and false if it
-# isn't. Assume int is less than or equal to the length of the string.
-#
-# Example:
-# 
-# prefix_repeated?("armed armadillo", 3)
-# 	- The prefix is the first three letters of the string, "arm".
-#   - Now we look to see if the string "arm" is repeated in the string. We can see that it
-#     is so we return true.
-#
-# prefix_repeated("armed armadillo", 4)
-# 	- This time the prefix is the first 4 letters, "arme".
-#	- "arme" does not appear again in the string so we return false
-
-def prefix_repeated?(string, int)
+# def prefix_repeated?(string, int)
 	
-end
+# end
 
-# Tests 
-puts(prefix_repeated?("a", 1) == false)
-puts(prefix_repeated?("prefix predator", 2) == true)
-puts(prefix_repeated?("prefix predator", 4) == false)
-puts(prefix_repeated?("poster child postfix", 4) == true)
-puts(prefix_repeated?("title", 1) == true)
+# # Tests 
+# puts(prefix_repeated?("a", 1) == false)
+# puts(prefix_repeated?("prefix predator", 2) == true)
+# puts(prefix_repeated?("prefix predator", 4) == false)
+# puts(prefix_repeated?("poster child postfix", 4) == true)
+# puts(prefix_repeated?("title", 1) == true)
 
 
 
@@ -545,10 +706,14 @@ puts(prefix_repeated?("title", 1) == true)
 puts "problem 49"
 ################
 #Given an array of integers, find the pair of adjacent elements that has the largest product and return that product.
-#ex: inputArray = [3, 6, 2] -5, 7, 3], the output should be = 21 bc 7 and 3 produce the largest product.
+#ex: inputArray = [3, 6, 2, -5, 7, 3], the output should be = 21 bc 7 and 3 produce the largest product.
 #todo list
 
+def largest_product (arr)
 
+end
+
+largest_product([3, 6, 2, -5, 7, 3])
 
 ################
 puts "problem 50"
@@ -628,3 +793,31 @@ puts "problem 58"
 # "elaborate"
 # "polar bear"
 
+################
+puts "problem 59"
+################
+
+#print 5 random numbers between 0 and 99
+# numbers = []
+
+numbers = [7, 9, 13, 25, 18]
+
+ind = 0
+
+until ind > numbers.length
+    puts numbers[ind]
+    ind += 1
+end
+
+###
+
+process_the_loop = [true, false].sample
+if true
+    "the loop was processed!"
+else
+    "the loop wasn't processed"
+end
+
+
+
+ 

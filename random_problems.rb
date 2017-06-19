@@ -305,3 +305,14 @@ puts "delete to remove a movie from the list"
 # end
 
 
+# "laboratory"
+# "experiment"
+# "Pans Labyrinth"
+# "elaborate"
+# "polar bear
+
+
+arr = ["laboratory", "experiment", "Pans Labyrinth", "elaborate", "polar bear"]
+
+arr.each/word/match("lab")
+
