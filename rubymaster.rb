@@ -64,7 +64,7 @@ elseif
 else
 
 ######################
-### SIMPLE IF/ELSE #### 
+### SIMPLE IF/ELSE ####
 #TERNARY COND. EXPSSION
 ######################
 
@@ -73,6 +73,13 @@ boolean ? Do this if true: Do this if false
 
 #example
 puts 3 < 4 ? "3 is less than 4" : "3 is not less than 4"
+
+#example
+def hello(name)
+  name ? "hello #{name}" : "Hello ... World"
+end
+
+puts hello("Olessia")
 
 
 #example
@@ -118,17 +125,17 @@ puts "Im running" unless true
 ######################
 ## CASE STATEMENT  ###
 ######################
-#like if/else 
+#like if/else
 #syntax: (then action is optional)
 case casevariable then action
 when "value1" then action
 when "value2"
 else
-end 
+end
 
 
 #exercise 10: CRUD in random_problems.rb
-#use Ruby hashes and symbols to construct a program that 
+#use Ruby hashes and symbols to construct a program that
 #adds, updates, displays, and removes movie ratings
 
 
@@ -171,13 +178,13 @@ true || !(true || false) # => true
 ########## ||= #######
 #CONDITIONAL ASSIGNMENT
 #######################
-#like = 
+#like =
 #assigns a variable if it hasn't been assigned already
 
 #good for using instead of checking if an array is empty
 #instead of:
 array = [] if array.nil?
-#better to use conditional assignment  
+#better to use conditional assignment
 array ||= []
 
 
@@ -224,7 +231,7 @@ print "whats your name hun?"
 ######################
 #runs as long as condition is true
 # returns nil
- 
+
 counter = 1
 while counter < 5
   puts counter
@@ -400,11 +407,11 @@ arr = arr.product(Array(1..3))
 #=> ["b", 1], ["b", 2,], ["b", 3,], ["a", 1], ["a", 2], ["a", 3]
 
 #.index find what index a particular element is at
-arr = [15, 7, 18, 5, 12, 8, 5, 1] 
+arr = [15, 7, 18, 5, 12, 8, 5, 1]
 arr.index(5) #=> 3
 
 #what element is at a particular index
-arr[5] # => 8 
+arr[5] # => 8
 
 
 
@@ -446,15 +453,15 @@ puts(important_var)
 ################################################################################
 
 
-#MULTIPLE ARGUMENTS * 
+#MULTIPLE ARGUMENTS *
 def what_up(greeting, *bros)
   bros.each { |bro| puts "#{greeting}, #{bro}!" }
 end
- 
+
 p what_up("What up", "Justin", "Ben", "Kevin Sorbo")
 
 # method that capitalizes a word
-def capitalize(string) 
+def capitalize(string)
   puts "#{string[0].upcase}#{string[1..-1]}" #[1..-1] >> prints the rest of the word normally
 end
 
@@ -506,14 +513,13 @@ member.each do |key, value|
   puts value, member[value]
 end
 
-## set default to a custom value 
+## set default to a custom value
 my_hash = Hash.new("default value here")
 
 ##accesing a value in a hash
-my_hash["key"]
-#or 
+my_hash[:key]
+#or
 my_hash.fetch("key")
-
 
 
 ##accessing a value based on specific criteria
@@ -523,7 +529,7 @@ grades = { David: 100,
   Joel: 95
 }
 
-grades.select{|name, grade| grade > 96} # :David => 100 
+grades.select{|name, grade| grade > 96} # :David => 100
 grades.select{|k, v| k == :Whirly } # :Whirly=>92
 
 
@@ -543,20 +549,20 @@ def greeting(name, options ={})
    if options.empty?
     puts "Hi, my name is #{name}"
   else
-    puts "Hi, my name is #{name} and I'm #{options[:age]}" + 
+    puts "Hi, my name is #{name} and I'm #{options[:age]}" +
     " years old and I live in #{options[:city]}."
   end
-end 
+end
 
 greeting ("Bob")
-greeting ("Bob", {age: 62, city: "SF"}) 
+greeting ("Bob", {age: 62, city: "SF"})
 #or
 gretting("Bob", age: 62. city: "SF")
 
 
-#Given a hash of family members, with keys as the title 
-#and an array of names as the values, 
-#use Ruby's built-in select method to gather only immediate family members' names 
+#Given a hash of family members, with keys as the title
+#and an array of names as the values,
+#use Ruby's built-in select method to gather only immediate family members' names
 #into a new array.
 
 
@@ -566,12 +572,12 @@ family = {  uncles: ["bob", "joe", "steve"],
             aunts: ["mary","sally","susan"]
           }
 
-immideate = family.select do |k, v | 
-   k == :sisters || k == :brothers 
+immideate = family.select do |k, v |
+   k == :sisters || k == :brothers
  end
- 
+
 arr = immideate.values.flatten
- 
+
 arr
 
 ################################################################################
@@ -594,11 +600,11 @@ second_symbol_hash = {
 }
 
 #OR
-owl = { 
-  :type => "Bird", 
-  :diet => "Carnivore", 
-  :life_span => "10 years" 
-  
+owl = {
+  :type => "Bird",
+  :diet => "Carnivore",
+  :life_span => "10 years"
+
 }
 
 #convert strings to symbols
@@ -634,8 +640,8 @@ puts "Symbol time: #{symbol_time} seconds."
 ###############################  ENUMERABLES  ##################################
 ################################################################################
 
-# .each - doesn't alter 
-# .each_with_index - 
+# .each - doesn't alter
+# .each_with_index -
 # .each_index - alters
 # .map - makes new arr
 # .each_with_index.map
@@ -646,18 +652,18 @@ puts "Symbol time: #{symbol_time} seconds."
 
 #.each_with_index
 #print out every other element in the array
-["cat", "dog", "pig", "goat"].each_with_index do |animal, idx| 
+["cat", "dog", "pig", "goat"].each_with_index do |animal, idx|
   puts animal if idx % 2 == 0 #every third is idx % 3 == 2
 end
 
 #.map
-#list -100 to 0 
+#list -100 to 0
 (0..100).map{|x| -x}
 
 #COMBINED .each_with_index + .map
 arr = ["a", "b", "c"].each_with_index.map do |letter, idx|
   "#{letter.capitalize} is in position #{idx+1} of the alphabet"
-end 
+end
 
 puts arr.join("\n")
 
@@ -667,7 +673,7 @@ puts [1,'a', 2, 'b', 5].select { |x| x.class==String}.join(", ") #a,b
 #.inject
 val = [1,3,5,7].inject(0) do |total, num|
    total += num
-end   
+end
 puts val   #=> 16
 
 # use .INJECT to convert an array into a hash
@@ -695,7 +701,7 @@ puts int
 #pass in a number to a block
 def take_block(number, &block)
   block.call(number)
-end 
+end
 
 number = 42
 take_block(number) do |num|
@@ -730,7 +736,7 @@ yield_name("Eric") { |n| puts "My name is #{n}." }
 #Saved block
 #good for keeping code DRY
 #.call - calls proc directly
-# & - convert symbols to procs 
+# & - convert symbols to procs
 # &procaname when passing to method - converts to block
 #weird edge cases with return, avoid using if possible
 #stops after first return
@@ -744,8 +750,8 @@ end
 (1..100).to_a.select(&multiples_of_3) #also .collect or .map
 
 
-# & - convert symbols to procs 
-#By mapping &:to_i over every element of strings, 
+# & - convert symbols to procs
+#By mapping &:to_i over every element of strings,
 #we turned each string into an integer!
 strings = ["1", "2", "3"]
 nums = strings.map(&:to_i)
@@ -763,8 +769,8 @@ youngsters = ages.select(&under_100)
 ################################################################################
 #same as a proc but different syntax &
 #checks the number of arguments passed to it
-#when a lambda returns, it passes control back to the calling method; 
-#when a proc returns, it does so immediately, without going back to the calling 
+#when a lambda returns, it passes control back to the calling method;
+#when a proc returns, it does so immediately, without going back to the calling
   #method
 # returns last line it evaluates
 # &lambdaname when passing to method - converts to block
@@ -783,7 +789,7 @@ puts long.call(2, 3)
 l = lambda { "Do or do not" }
 puts l.call
 
-# turn array of strings into array of symbols 
+# turn array of strings into array of symbols
 strings = ["leonardo", "donatello", "raphael", "michaelangelo"]
 
 symbolize = lambda { |x| x.to_sym }
@@ -792,13 +798,13 @@ symbols = strings.collect(&symbolize)
 
 
 #difference between proc and lambda
-def batman_ironman_proc 
+def batman_ironman_proc
   victor = Proc.new { return "Batman will win"}
   victor.call
   "Ironman will win"
 end
 
-puts batman_ironman_proc 
+puts batman_ironman_proc
 # => Batman will win
 #returns immediately, without going back to the batman_ironman_proc method
 
@@ -806,11 +812,11 @@ def batman_ironman_lambda
   victor = lambda{ return "Batman will win" }
   victor.call
   "Ironman will win"
-end 
+end
 
-puts batman_ironman_lambda 
+puts batman_ironman_lambda
 # => Ironman will win
-#goes back into the method after being called, 
+#goes back into the method after being called,
 #so the method returns the last code it evaluates
 
 
@@ -821,4 +827,262 @@ symbol_filter = lambda { |x| x.is_a? Symbol }
 symbols = my_array.select(&symbol_filter)
 
 
+################################################################################
+##############################   CLASSES     ###################################
+################################################################################
 
+#syntax example
+class Language
+  def initialize(name, creator)
+    @name = name
+    @creator = creator
+  end
+
+  def description
+    puts "I'm #{@name} and I was created by #{@creator}!"
+  end
+end
+
+ruby = Language.new("Ruby", "Yukihiro Matsumoto")
+python = Language.new("Python", "Guido van Rossum")
+javascript = Language.new("JavaScript", "Brendan Eich")
+
+ruby.description
+python.description
+javascript.description
+
+#inheritance example
+class ApplicationError
+	def display_error
+		puts "error! Error!"
+	end
+end
+
+class SuperBadError < ApplicationError #inherits display_error method from ApplicationError
+end
+err = SuperBadError.new
+err.display_error
+###outputs: error! Error
+
+#OVERRIDE Example: Dragon fight method overrides superclass Creaure fight method
+Class Creature
+	def initialize(name)
+		@name = name
+	end
+
+	def fight
+		return "Punch!"
+	end
+end
+
+class Dragon < Creature
+	def fight
+		return "FIRE!!"
+	end
+end
+
+##SUPER: KEYWORD WILL OVERRIDE THE OVERIDE
+
+class DerivedClass < Base
+  def some_method
+    super(optional args)
+      # Some stuff
+    end
+  end
+end
+
+################################################################################
+##############################   EXCEPTIONS    #################################
+################################################################################
+#http://ruby.bastardsbook.com/chapters/exception-handling/
+#begin - start of exception-handling block
+#rescue -#code that executes if an exception is raised
+	# Rescues all errors, and puts the exception object in `e`
+		rescue => e
+		# Rescues only ZeroDivisionError and puts the exception object in `e`
+		rescue ZeroDivisionError => e
+#else - THE code (if no exceptions)
+#ensure - executes regardless of errors/exceptions
+#retry - redirects program to the begin statement (helpful in a loop)
+
+#raise - triggering your own exception to be caught
+
+begin
+	# raises an ArgumentError with the message "you messed up!"
+	raise ArgumentError.new("You messed up!")
+rescue ArgumentError => e
+	puts e.message
+end
+# Outputs: You messed up!
+
+
+#basic example
+begin
+  # Any exceptions in here...
+  1/0
+rescue
+  # ...will cause this code to run
+  puts "Got an exception, but I'm responding intelligently!"
+  do_something_intelligent()
+end
+
+# This program does not crash.
+# Outputs: "Got an exception, but I'm responding intelligently!"
+
+
+# advanced example:
+values = [42, 'a', 'r', 9, 5, 10022, 8.7, "sharon", "Libya", "Mars", "12", 98, rand + rand, {:dog=>'cat'}, 100, nil, 200.0000, Object, 680, 3.14, "Steve", 78, "Argo"].shuffle
+
+while values.length > 0
+  a = values.pop
+  b = values.pop
+
+  begin
+     a + b
+  rescue
+     puts "Could not add variables a (#{a.class}) and b (#{b.class})"
+  else
+     puts "a + b is #{a + b}"
+  end
+
+end
+
+## "Could not add variables a (String) and (Fixnum)"
+## a + b is rsharon
+## etc
+
+#begin/rescue block with user_input
+while 1
+   puts "Enter a number>>"
+   begin
+     num = Kernel.gets.match(/\d+/)[0]
+   rescue
+     puts "Erroneous input! Try again..."
+   else
+     puts "#{num} + 1 is: #{num.to_i+1}"
+   end
+end
+#output
+# ~ :)  ruby extest.rb
+# Enter a number>>
+# 8
+# 8 + 1 is: 9
+# Enter a number>>
+# eight
+# Erroneous input! Try again...
+# Enter a number>>
+
+
+#RETRY openinng url based on end date
+require 'open-uri'
+remote_base_url = "http://en.wikipedia.org/wiki"
+
+[1900, 1910, 'xj3490', 2000].each do |yr|
+
+ retries = 3
+
+ begin
+   url = "#{remote_base_url}/#{yr}"
+   puts "Getting page #{url}"
+   rpage = open(url)
+ rescue StandardError=>e
+   puts "\tError: #{e}"
+   if retries > 0
+       puts "\tTrying #{retries} more times"
+       retries -= 1
+       sleep 1
+       retry
+   else
+       puts "\t\tCan't get #{yr}, so moving on"
+   end
+ else
+   puts "\tGot page for #{yr}"
+ ensure
+   puts "Ensure branch; sleeping"
+   sleep 1
+
+ end
+end
+
+
+################################################################################
+###################################   I/O FILES ################################
+################################################################################
+##################
+#CREATING A File
+##################
+
+aFile = File.new("testfile")
+
+#opening a file
+aFile = File.new("testfile", "r") #file object. Open a tesfile for reading with an r
+# ... process the File
+aFile.close
+#returns new file object
+
+#OR with block, passes a newly opened File as a parameter, after block exits, closes file
+File.open("testfile", "r") do |aFile|
+# ... process the File
+end
+
+########################
+#READING FILES ITERATORS
+########################
+
+aFile.each_line { |line| puts "Got #{line.dump}" }
+#Got "This is line one\n"
+#Got "This is line two\n"
+
+aFile.each_line("e") do |line| #E is a line separator
+	puts "got #{ line.dump }"
+end
+# Got "This is line"
+# Got " one"
+# Got "\nThis is line"
+# Got " two\nThis is line"
+
+IO.foreach("testfile") { |line| puts line}
+# This is line one
+# This is line two
+# This is line three
+
+#example: simple
+#!/file path
+
+fname = "alllines.rb"
+File.readlines(fname).each do |line|
+	puts line
+end
+
+
+########################
+#WRITING FILES ITERATORS
+########################
+# objects passed to puts/print are converted to a string by calling .to_s method
+# and returns a valid string
+
+#example: write to file
+f = File.open('output.txt', 'w') #open txt file in WRITE mode
+f.puts "The Ruby tutorial"
+f.close
+#cat output.txt ==> The Ruby tutorial
+
+#example: if theres a block after open method, Ruby passes the opened stream
+	#to this block, file closes at the end of block
+File.open('langs', 'w') do |f|
+  	f.puts "Ruby"
+    f.write "Java\n"
+    f << "Python\n"
+
+end
+
+#example: create new file, rename it
+puts File.exists? 'tempfile' #t/f
+
+f = File.new 'tempfile', 'w'
+puts File.mtime 'tempfile' #
+puts f.size
+
+File.rename 'tempfile', 'tempfile2'
+
+f.close
