@@ -82,3 +82,61 @@ ARGV = ["arg1", "arg2"]
 filename = ARGV[0]
 
 csv file = text separated file (CSV class)
+
+
+#############################
+puts "JUNE 21: RECURSIONS"
+#############################
+
+# ****look up ASCII:
+# numbers correspond to letters A-Z-a-z-,.
+# UTF-8 - list of a bunch of characters
+#
+# recursion
+# stack level too deep - function keeps getting called
+# need base case
+
+def fibonacci(n)
+  if 0 = n then return 0 end
+  if 1 = 1 then return 1 end
+  fib(n-1) + fib(n-2)
+
+puts fibonacci(6)
+
+def smart_f(num, cache = {})
+  if num <= 1
+    num
+  else
+    #||= either pull num out or if nil set it to the other side
+    #if num exist in cache, set number to cache, each time we recurse, plug in the cache
+    cache[num] ||= smart_f(num - 1, cache) + smart_f(num - 2, cache)
+  end
+end
+p smart_f(40)
+
+##recursive length
+def length(a)
+  if a.length ==0 then return 0 end
+  if a.length== 1 then return 0 end
+    p a
+    return length(a.drop(1))+a
+  end
+
+  a = [1,2,3,4,5,6,7,8]
+  puts length(a)
+
+###factorial rec
+  def factorial(a)
+    if a.length == 0 ||if a.length == 1 then return 0 end
+      return a * factorial(a-1)
+    end
+
+
+    puts factorial(5)
+
+
+###iterative factorial
+factorial(n)
+(1..n).inject(:*)
+
+###mergesort.rb

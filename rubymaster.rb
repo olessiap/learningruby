@@ -21,7 +21,6 @@
 18. local variable = defined within a method is 'local' to that method
 19. return will stop an entire method, whereas
     break will just break out of a loop and continue with the rest of the code in the method.
-20. sort! -- exclamation point permanently changes the array rather than making a new copy that is sorted
 =end
 
 ##Symbols##
@@ -1086,3 +1085,36 @@ puts f.size
 File.rename 'tempfile', 'tempfile2'
 
 f.close
+
+
+################################################################################
+###################################   RECURSION ################################
+################################################################################
+
+def fact(n)
+  return 1 if n <= 1
+  n * fact(n-1)
+end
+fact(4)
+#=> 4 * fact(3)
+#=> 4 * ( 3 * fact(2) )
+#=> 4 * ( 3 * ( 2 * fact(1) ) )
+#=> 4 * ( 3 * ( 2 * 1 ) )
+#=> 4 * ( 3 * 2 )
+#=> 4 * 6
+#=> 24
+
+###############
+#Tail recursion
+##############
+def fact(n, acc=1)
+  return acc if n <= 1
+  fact(n-1, n*acc)
+end
+
+fact(4)
+#=> fact(4, 1)
+#=> fact(3, 4)
+#=> fact(2, 12)
+#=> fact(1, 24)
+#=> 24
