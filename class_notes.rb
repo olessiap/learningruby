@@ -140,3 +140,56 @@ factorial(n)
 (1..n).inject(:*)
 
 ###mergesort.rb
+
+
+#############################
+"JUNE 22: SORTING ALGORITHMS"
+#############################
+[1, 2, 3, 4, 5]
+finding length of arr
+
+stupid search:
+worst = n times
+best = 1 time
+avarage = n/2
+if double arr
+  worst = n*2
+worst case O(n)
+best case Omega(1)
+
+B search:
+worst case: 4
+best case: 1
+if double arr
+  worst=5
+worst: O(logn)
+
+cd into directory
+git init - initializes
+git status
+
+git add -p file
+
+git push
+
+git stash
+git pull
+git stash pop
+
+
+######################################################
+######################TESTING#########################
+######################################################
+#begin
+- look for unforseen emergencies
+- support continued dev
+- make sure it works
+- make sure new code dosent break existing code
+- validating data
+- help to design a program
+- documenting code/ good for new devs to come in and get up to speed
+#end
+
+test driven dev - run tests before writing any code and etc 
+
+methods: describe, context

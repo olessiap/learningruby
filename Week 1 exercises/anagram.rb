@@ -18,7 +18,7 @@ def second_anagram?(str, search_term)
   term_arr = search_term.chars
     #take 1st e of str_arr
     #compare it to all e in term_arr
-    #when there's a match, delete 1st e of  str_arr
+    #when there's a match, delete 1st e of str_arr
     until str_arr.empty? && str.include?(search_term)
       c = str_arr[0]
       shift = false
@@ -36,6 +36,9 @@ def second_anagram?(str, search_term)
     end
   return true
 end
+
+#2nd
+
   #if str[e] = search_term[e] delete one at a time
   #if both.empty? return true
 
@@ -58,7 +61,7 @@ def bubble_sort(arr)
   swaped = false
 
   n = arr.length
-  (n-1).times do |e| # loops through block twice
+  (n-1).times do |e|
     if arr[e] > arr[e+1]
       arr[e], arr[e+1] = arr[e+1], arr[e]
       swaped = true
@@ -71,6 +74,7 @@ end
 
 
 p third_anagram?("aba", "bad")
+
 
 def fourth_anagram?(str, search_term)
 hash1 = Hash.new(0)

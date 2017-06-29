@@ -238,7 +238,9 @@ while counter < 5
 end
 
 ######################
-##### UNTIL LOOP #####
+#####
+
+ LOOP #####
 ######################
 #runs as long as the condition is false
 i = 0
@@ -829,6 +831,43 @@ symbols = my_array.select(&symbol_filter)
 ################################################################################
 ##############################   CLASSES     ###################################
 ################################################################################
+#encapsulation - keeps shit separated in dif capsules
+# => inputs outputs something
+
+#share similar attributes
+
+#organization
+#class - a group
+
+#to return instance variables need attr_reader :instanceV,
+#to change instance variables values, need attr_writer :instanceV,
+#to both return and be able to change attr_accessor :instanceV,
+# => to return the state of the object, validate date, output a differnet format, change the input, return another
+#to change: object.method("newvalue")
+#class methods - methods that directly call the class,
+# => def self.classmethodname
+# => classname.classmethodname
+
+#instance variable - keeps track of objects STATE
+#instance methods - keeps track of objects ACTIONS
+#self inside an instance method references the instance(object) that called the method
+#self outside an instance method references the class and can be used to define class methods
+
+#inheritance <
+#SUPER inherits the method from a super class AND extends the functionality
+# => super(global variables from the super class)
+
+
+#module: methods that can be used in dif classes with "include Module" inside Class
+#If it's an "is-a" relationship, choose class inheritance. If it's a "has-a" relationship, choose modules.
+
+#method look up path by using Classname.ancestors
+
+#public vs private methods
+
+#best practices
+# => have a display method to display status of each parameter
+# => have a status method to return a key @global value(if no local var is overidng it )
 
 #syntax example
 class Language
@@ -889,6 +928,56 @@ class DerivedClass < Base
     end
   end
 end
+
+#virtual computer & its instances that manipulate imaginary files
+#initialize username, password,
+#class variable: users to keep track of them in an empty hash
+#instance variable files to keep track of files in an empty hash
+#method create with filename as param  that records time & uses the files hash to store filename and time
+	#print message of what was created, when and by who
+#create a class method get_users to reach(return) the @@users variable
+#create an instance of our Computer with username/password
+#call the create method on the instance of Computer
+
+class Computer
+	@@users = {} #class variable, hash that keeps track of users
+
+	def initialize(username, password)
+		@username = username
+		@password = password
+		 #so the @@users hash keeps uersname as keys with each username's passoword as a value
+		@@users[username] = password
+		@files = {} #empty hash to keep track of the files later
+	end
+
+	def create(filename)
+		time = Time.now
+		@files[filename] = time #adds to files hash username as key, time as value
+		puts "filename #{filename} was created #{time} by #{@username}"
+	end
+
+	def Computer.get_users
+		@@users
+	end
+
+end
+
+my_computer = Computer.new("ovpuser", 1234)
+your_computer = Computer.new("crazyguy", 5678)
+
+my_computer.create("rubypractice.rb")
+your_computer.create("rubyisfile.txt")
+
+puts "users: #{computer.get_users}"
+
+
+
+
+
+
+
+
+
 
 ################################################################################
 ##############################   EXCEPTIONS    #################################
@@ -1118,3 +1207,65 @@ fact(4)
 #=> fact(2, 12)
 #=> fact(1, 24)
 #=> 24
+
+################################################################################
+##################################### BIG O ####################################
+################################################################################
+
+O(n)
+#counting the number of characters in a string
+'cat' => n = 3
+
+O(1) #constant time with respect to the input size
+#accessing/storing a value of a variable
+len = 1000
+
+O(n^2) # as the number of elements n grows, takes longer to run than O(n)
+ex: nested loop
+
+O(log N) #peaks in the beginning, slowly flattens out as data size increases
+#binary search
+#10x the data = 20x more time
+
+
+
+###############
+#bubble sort:last (n-1)
+###############
+# for each e in list,
+# look at e and the e directly to the right
+# if out of order swap e
+# repeat
+
+
+###############
+#selection sort
+###############
+#go through the whole list
+#find the minimum
+# << to sorted array
+#go throught the rest of list
+# if e > min << to sorted
+
+
+###############
+#quicksort
+###############
+#recursive method
+#pivot (pop last e)
+look through remaining
+put elements less than p into left
+
+
+if "senetnece".match/hay/ then p "matched" else p "no match" end
+
+.match - pulls stuff out
+.scan - return t/f
+.split -
+
+/regex/ =~ ind of first occurnace
+.gsub(/regex/, ' ')
+replace
+'a.jpeg'.gsub(/jpeg/, 'jpg')
+
+'hello'/gsub(/(l+?)/ { |s| s/ord.to_s+' '})
